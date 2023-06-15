@@ -11,7 +11,7 @@ body {
 }
 
 .content {
-    background-image: url("../assets/game_background/cod_2_background.webp");
+    background-image: url("../assets/game_background/cod1_walpaper.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -46,14 +46,14 @@ body {
     align-items: center;
     flex-direction: column;
     gap: 1.5rem;
-    border-radius: 35px;
+    border-radius: 30px;
 }
 
 .navbar-game {
     background-color: #383636;
     width: 3rem;
     height: 3rem;
-    border-radius: 40%;
+    border-radius: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -66,11 +66,63 @@ body {
     background-color: black;
 }
 
+.game-container {
+    padding-left: 5rem;
+    display: flex;
+    justify-content: start;
+    /*align-items: start;*/
+    flex-direction: column;
+}
+
 .game-title {
     font-family: Poppins;
-    font-size: 5.5rem;
+    font-size: 4.5rem;
     color: white;
     text-align: center;
     text-align: left;
     font-family: 'Staatliches', cursive;
 }
+
+.button-play {
+    background-color: #dde8e8;
+    width: 10rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    border-radius: 30px;
+    cursor: pointer;
+    padding-left: 1rem;
+    font-family: Poppins;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 1.1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.button-play > p {
+    margin-left: 1.2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.play-icon {
+    position: relative;
+    z-index: 2;
+}
+
+.loader {
+    background: #f8dfdf;
+    width: 0;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    transition: width 3s;
+}
+
+.button-play.loading .loader {
+    width: 100%;
+}
+

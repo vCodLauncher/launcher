@@ -3,65 +3,80 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Krona+One&family=Poppins:wght@300;400;500;600;700&family=Staatliches&display=swap" rel="stylesheet">
 
-
 <body>
-    <section class="main">
-        <div class="content">
-            <div class="navbar">
-                <div class="navbar-container-game">
-                    <div class="navbar-game" id="game1">
-                        <img src="assets/game_logo/cod_1_logo.png" width="42" height="42">
-                    </div>
-                    <div class="navbar-game" id="game2">
-                        <img src="assets/game_logo/cod_uo_logo.png" width="42" height="42">
-                    </div>
-                    <div class="navbar-game" id="game3">
-                        <img src="assets/game_logo/cod_2_logo.png" width="42" height="42">
-                    </div>
-                    <div class="navbar-game" id="game4">
+<section class="main">
+    <div class="content">
+        <div class="navbar">
+            <div class="navbar-container-game">
+                <div class="navbar-game" id="game1" onclick="switchGame('cod1')">
+                    <img src="assets/game_logo/cod_1_logo.png" width="42" height="42">
+                </div>
+                <div class="navbar-game" id="game2" onclick="switchGame('cod_united_offensive')">
+                    <img src="assets/game_logo/cod_uo_logo.png" width="42" height="42">
+                </div>
+                <div class="navbar-game" id="game3" onclick="switchGame('cod2')">
+                    <img src="assets/game_logo/cod_2_logo.png" width="42" height="42">
+                </div>
+                <div class="navbar-game" id="game4">
 
-                    </div>
                 </div>
             </div>
-            <div>
-                <h1 class="game-title" id="title">
-                    Call Of Duty <br />
-                    Classic
-                </h1>
+        </div>
+        <div class="game-container">
+            <h1 class="game-title" id="title">
+                Call Of Duty <br />
+                Classic
+            </h1>
+            <div class="button-play" onclick="startLoading()">
+                <img class="play-icon" src="assets/icon/button-play.png" width="32" height="32">
+                <p>Play</p>
+                <div class="loader"></div>
             </div>
         </div>
-        <div class="footer">
+    </div>
+    <div class="footer">
 
-        </div>
-    </section>
+    </div>
+</section>
 
 <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const content = document.querySelector(".content");
-            const title = document.getElementById("title");
+    document.addEventListener("DOMContentLoaded", function() {
+        const game1 = document.getElementById("game1");
+        const game2 = document.getElementById("game2");
+        const game3 = document.getElementById("game3");
 
-            const game1 = document.getElementById("game1");
-            game1.addEventListener("click", () => {
-                content.style.backgroundImage = 'url("./assets/game_background/cod1_walpaper.png")';
-                title.innerHTML = "Call Of Duty <br> Classic";
-            });
-
-            const game2 = document.getElementById("game2");
-            game2.addEventListener("click", () => {
-                content.style.backgroundImage = 'url("./assets/game_background/cod_uo_background.jpeg")';
-                title.textContent = "Call Of Duty United Offensive";
-            });
-
-            const game3 = document.getElementById("game3");
-            game3.addEventListener("click", () => {
-                content.style.backgroundImage = 'url("./assets/game_background/cod_2_background.webp")';
-                title.textContent = "Call Of Duty 2";
-            });
-
-            // Ajoutez d'autres éléments de la classe "navbar-game" de la même manière
-
+        game1.addEventListener("click", function() {
+            switchGame("cod1");
         });
+
+        game2.addEventListener("click", function() {
+            switchGame("cod_united_offensive");
+        });
+
+        game3.addEventListener("click", function() {
+            switchGame("cod2");
+        });
+    });
+
+    function switchGame(game) {
+        const title = document.getElementById("title");
+        const content = document.querySelector(".content");
+
+        switch (game) {
+            case "cod1":
+                title.innerHTML = "Call Of Duty <br> Classic";
+                content.style.backgroundImage = 'url("./assets/game_background/cod1_walpaper.png")';
+                break;
+            case "cod_united_offensive":
+                title.innerHTML = "Call Of Duty <br> United Offensive";
+                content.style.backgroundImage = 'url("./assets/game_background/cod_uo_background.jpeg")';
+                break;
+            case "cod2":
+                title.innerHTML = "Call Of Duty 2";
+                content.style.backgroundImage = 'url("./assets/game_background/cod_2_background.webp")';
+                break;
+        }
+    }
 </script>
+<script src="gameStart.js"></script>
 </body>
-
-

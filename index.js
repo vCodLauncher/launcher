@@ -5,8 +5,8 @@ function createWindow () {
     const win = new BrowserWindow({
         width: 1200,
         height: 800,
-        resizable: false, // empêche le redimensionnement de la fenêtre
-        fullscreenable: false, // empêche la mise en plein écran de la fenêtre
+        resizable: false,
+        fullscreenable: false,
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false,
