@@ -1,3 +1,67 @@
-<section>
+<link rel="stylesheet" href="css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Krona+One&family=Poppins:wght@300;400;500;600;700&family=Staatliches&display=swap" rel="stylesheet">
 
-</section>
+
+<body>
+    <section class="main">
+        <div class="content">
+            <div class="navbar">
+                <div class="navbar-container-game">
+                    <div class="navbar-game" id="game1">
+                        <img src="assets/game_logo/cod_1_logo.png" width="42" height="42">
+                    </div>
+                    <div class="navbar-game" id="game2">
+                        <img src="assets/game_logo/cod_uo_logo.png" width="42" height="42">
+                    </div>
+                    <div class="navbar-game" id="game3">
+                        <img src="assets/game_logo/cod_2_logo.png" width="42" height="42">
+                    </div>
+                    <div class="navbar-game" id="game4">
+
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h1 class="game-title" id="title">
+                    Call Of Duty <br />
+                    Classic
+                </h1>
+            </div>
+        </div>
+        <div class="footer">
+
+        </div>
+    </section>
+
+<script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const content = document.querySelector(".content");
+            const title = document.getElementById("title");
+
+            const game1 = document.getElementById("game1");
+            game1.addEventListener("click", () => {
+                content.style.backgroundImage = 'url("./assets/game_background/cod1_walpaper.png")';
+                title.innerHTML = "Call Of Duty <br> Classic";
+            });
+
+            const game2 = document.getElementById("game2");
+            game2.addEventListener("click", () => {
+                content.style.backgroundImage = 'url("./assets/game_background/cod_uo_background.jpeg")';
+                title.textContent = "Call Of Duty United Offensive";
+            });
+
+            const game3 = document.getElementById("game3");
+            game3.addEventListener("click", () => {
+                content.style.backgroundImage = 'url("./assets/game_background/cod_2_background.webp")';
+                title.textContent = "Call Of Duty 2";
+            });
+
+            // Ajoutez d'autres éléments de la classe "navbar-game" de la même manière
+
+        });
+</script>
+</body>
+
+
