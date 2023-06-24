@@ -17,3 +17,21 @@ function updateRoomCounts() {
 }
 
 setInterval(updateRoomCounts, 5000);
+
+window.addEventListener("DOMContentLoaded", function() {
+
+    const roomElements = document.querySelectorAll(".room-box");
+
+    roomElements.forEach(roomElement => {
+        roomElement.addEventListener("click", function() {
+            const roomType = roomElement.getAttribute('data-room');
+
+            fetch(`http://193.38.250.89:3000/room/${roomType}/join`, {
+                method: 'POST'
+            })
+                .then(response => response.json())
+                .then(data => console.log(data))
+                .catch(error => console.error('Error:', error));
+        });
+    });
+});
