@@ -11,7 +11,7 @@ body {
 }
 
 .content {
-    background-image: url("../assets/game_background/test.jpg");
+    background-image: url("../game_background/test.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;

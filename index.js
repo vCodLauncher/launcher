@@ -13,7 +13,7 @@ function createWindow () {
             enableRemoteModule: true
         }
     })
-    win.loadFile(path.join(__dirname, 'index.html'))
+    win.loadFile(path.join(__dirname, 'templates/index.html'))
 }
 
 app.whenReady().then(() => {

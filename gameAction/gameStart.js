@@ -1,6 +1,6 @@
 const { exec } = require('child_process');
 const fs = require('fs');
-const { isWindows, isMac, isLinux } = require('./utils/checkOs');
+const { isWindows, isMac, isLinux } = require('../utils/checkOs');
 
 let gamePaths;
 if (fs.existsSync('gamePaths.json')) {
