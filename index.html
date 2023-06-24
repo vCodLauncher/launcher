@@ -1,9 +1,8 @@
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style.css" xmlns="">
 <link rel="stylesheet" href="css/modal.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Krona+One&family=Poppins:wght@300;400;500;600;700&family=Staatliches&display=swap" rel="stylesheet">
-
 
 <body>
 <section class="main">
@@ -44,12 +43,12 @@
                     Join a room
                 </h1>
                 <div class="room-saloon-container">
-                    <div class="room-box" data-room="team-deathmatch">
+                    <div class="room-box" data-room="team-deathmatch" onclick="joinRoom('team-deathmatch')">
                         <p class="room-title">
                             Team Deathmatch
                         </p>
                         <p class="room-online">
-                            <span style="color: #7fc71b">0</span> Players online
+                            <span id="team-deathmatch-players" style="color: #7fc71b">0</span> Players online
                         </p>
                     </div>
                     <div class="room-box" data-room="search and destroy">
@@ -133,6 +132,7 @@
     }
 </script>
 
-
+<script src="roomManager.js"></script>
 <script src="gameStart.js"></script>
+<script src="roomManager.js"></script>
 </body>
