@@ -1,20 +1,22 @@
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/modal.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Krona+One&family=Poppins:wght@300;400;500;600;700&family=Staatliches&display=swap" rel="stylesheet">
+
 
 <body>
 <section class="main">
     <div class="content">
         <div class="navbar">
             <div class="navbar-container-game">
-                <div class="navbar-game" id="game1" onclick="switchGame('cod1')">
+                <div class="navbar-game" id="game1" onclick="switchGame('cod1', this)">
                     <img src="assets/game_logo/cod_1_logo.png" width="42" height="42">
                 </div>
-                <div class="navbar-game" id="game2" onclick="switchGame('cod_united_offensive')">
+                <div class="navbar-game" id="game2" onclick="switchGame('cod_united_offensive', this)">
                     <img src="assets/game_logo/cod_uo_logo.png" width="42" height="42">
                 </div>
-                <div class="navbar-game" id="game3" onclick="switchGame('cod2')">
+                <div class="navbar-game" id="game3" onclick="switchGame('cod2', this)">
                     <img src="assets/game_logo/cod_2_logo.png" width="42" height="42">
                 </div>
                 <div class="navbar-game" id="game4">
@@ -24,13 +26,57 @@
         </div>
         <div class="game-container">
             <h1 class="game-title" id="title">
-                Call Of Duty <br />
+                Call Of Duty: <br />
                 Classic
             </h1>
-            <div class="button-play" onclick="startLoading()">
-                <img class="play-icon" src="assets/icon/button-play.png" width="32" height="32">
-                <p>Play</p>
-                <div class="loader"></div>
+            <div class="container-button">
+                <div class="button-play" onclick="startLoading()">
+                    <img class="play-icon" src="assets/icon/button-play.png" width="32" height="32">
+                    <p>Launch game</p>
+                    <div class="loader"></div>
+                </div>
+                <div class="button-settings">
+                    <img class="play-icon" src="assets/icon/reglages.png" width="32" height="32">
+                </div>
+            </div>
+            <div class="room-container">
+                <h1 class="room-container-title">
+                    Join a room
+                </h1>
+                <div class="room-saloon-container">
+                    <div class="room-box" data-room="team-deathmatch">
+                        <p class="room-title">
+                            Team Deathmatch
+                        </p>
+                        <p class="room-online">
+                            <span style="color: #7fc71b">0</span> Players online
+                        </p>
+                    </div>
+                    <div class="room-box" data-room="search and destroy">
+                        <p class="room-title">
+                            Search & Destroy
+                        </p>
+                        <p class="room-online">
+                            <span style="color: #7fc71b">0</span> Players online
+                        </p>
+                    </div>
+                    <div class="room-box" data-room="deathmatch">
+                        <p class="room-title">
+                            Deathmatch
+                        </p>
+                        <p class="room-online">
+                            <span style="color: #7fc71b">0</span> Players online
+                        </p>
+                    </div>
+                    <div class="room-box" data-room="gungame">
+                        <p class="room-title">
+                            Gungame
+                        </p>
+                        <p class="room-online">
+                            <span style="color: #7fc71b">0</span> Players online
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -56,6 +102,14 @@
         game3.addEventListener("click", function() {
             switchGame("cod2");
         });
+
+        const roomBoxes = document.querySelectorAll(".room-box");
+        roomBoxes.forEach(function(roomBox) {
+            roomBox.addEventListener("click", function() {
+                const roomType = this.getAttribute("data-room");
+                window.location.href = "gamePage.html?roomType=" + roomType;
+            });
+        });
     });
 
     function switchGame(game) {
@@ -64,19 +118,21 @@
 
         switch (game) {
             case "cod1":
-                title.innerHTML = "Call Of Duty <br> Classic";
-                content.style.backgroundImage = 'url("./assets/game_background/cod1_walpaper.png")';
+                title.innerHTML = "Call Of Duty: <br> Classic";
+                content.style.backgroundImage = 'url("./assets/game_background/test.jpg")';
                 break;
             case "cod_united_offensive":
-                title.innerHTML = "Call Of Duty <br> United Offensive";
+                title.innerHTML = "Call Of Duty: <br> United Offensive";
                 content.style.backgroundImage = 'url("./assets/game_background/cod_uo_background.jpeg")';
                 break;
             case "cod2":
-                title.innerHTML = "Call Of Duty 2";
+                title.innerHTML = "Call Of Duty: 2 <br> Classic";
                 content.style.backgroundImage = 'url("./assets/game_background/cod_2_background.webp")';
                 break;
         }
     }
 </script>
+
+
 <script src="gameStart.js"></script>
 </body>

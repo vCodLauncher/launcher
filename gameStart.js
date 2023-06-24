@@ -28,7 +28,7 @@ document.querySelector('.button-play').addEventListener('click', () => {
 
     startLoading();
 
-    exec('wine64 CoDMP.exe', { cwd: currentGamePath }, (error, stdout, stderr) => {
+    exec('wine64 CoDMP.exe +connect 127.0.0.1', { cwd: currentGamePath }, (error, stdout, stderr) => {
         if (error) {
             console.error(`exec error: ${error}`);
             return;
@@ -43,6 +43,6 @@ document.querySelector('.button-play').addEventListener('click', () => {
 
 function stopLoading() {
     const button = document.querySelector(".button-play");
-    button.childNodes[3].innerHTML = "Play";
+    button.childNodes[3].innerHTML = "Launch game";
     button.classList.remove("loading");
 }
