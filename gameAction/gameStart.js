@@ -3,7 +3,7 @@ const { isWindows, isMac, isLinux } = require('../utils/checkOs');
 
 
 async function mainStart() {
-    let currentGamePath = await getSettings('gamePathCOD1');
+    let currentGamePath = await getSettings('COD1');
 
 
 console.log(currentGamePath);
