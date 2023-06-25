@@ -2,7 +2,8 @@
 <link rel="stylesheet" href="css/modal.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Krona+One&family=Poppins:wght@300;400;500;600;700&family=Staatliches&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Krona+One&family=Poppins:wght@300;400;500;600;700&family=Staatliches&display=swap"
+      rel="stylesheet">
 
 <body>
 <section class="main">
@@ -24,8 +25,9 @@
             </div>
         </div>
         <div class="game-container">
+            <div id="notification" class="notification">Test</div>
             <h1 class="game-title" id="title">
-                Call Of Duty: <br />
+                Call Of Duty: <br/>
                 Classic
             </h1>
             <div class="container-button">
@@ -38,29 +40,30 @@
                     <img class="play-icon" src="../assets/icon/reglages.png" width="32" height="32">
                 </div>
             </div>
-            <div id="modal" class="modal">
+            <div id="modalCOD1" class="modal">
                 <div class="modal-header">
-                    <h2>Settings</h2>
-                    <div class="button-settings"  id="close-button">
+                    <h2 id="settingsTitle">Call Of Duty: Classic - Settings</h2>
+                    <div class="button-settings" id="close-button">
                         <img class="play-icon" src="../assets/icon/x.png" width="32" height="32">
                     </div>
 
                 </div>
                 <form id="saveSettings">
-                <div class="modal-content">
-                    <p class="setting-name">Game Location :</p>
-                   <div class="browse-game">
-                       <button id="select-folder" class="browse-button" type="button">Browse</button>
-                       <input id="selected-folder-text" class="input-folder" value="Aucun dossier sélectionné" disabled />
-                   </div>
+                    <div class="modal-content">
+                        <p class="setting-name">Game Location :</p>
+                        <div class="browse-game" id="select-folder">
+                            <button class="browse-button" type="button">Browse</button>
+                            <input id="selected-folder-text" class="input-folder" value="Aucun dossier sélectionné"
+                                   disabled/>
+                        </div>
 
-                </div>
-
-                <div class="modal-footer">
-                    <div class="save-footer">
-                        <button type="submit" class="browse-button">Save</button>
                     </div>
-                </div>
+
+                    <div class="modal-footer">
+                        <div class="save-footer">
+                            <button type="submit" class="browse-button">Save</button>
+                        </div>
+                    </div>
                 </form>
             </div>
 
@@ -110,120 +113,11 @@
     </div>
 </section>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const selectedFolder = document.getElementById('selected-folder-text');
-        getSettings('COD1').then(data => {
-             selectedFolder.value = data || 'Aucun dossier sélectionné';
-        }) ;
-
-        const game1 = document.getElementById("game1");
-        const game2 = document.getElementById("game2");
-        const game3 = document.getElementById("game3");
-
-        game1.addEventListener("click", function() {
-            switchGame("cod1");
-        });
-
-        game2.addEventListener("click", function() {
-            switchGame("cod_united_offensive");
-        });
-
-        game3.addEventListener("click", function() {
-            switchGame("cod2");
-        });
-
-        const roomBoxes = document.querySelectorAll(".room-box");
-        roomBoxes.forEach(function(roomBox) {
-            roomBox.addEventListener("click", function() {
-                const roomType = this.getAttribute("data-room");
-                window.location.href = "gamePage.html?roomType=" + roomType;
-            });
-        });
-    });
-
-    function switchGame(game) {
-        const title = document.getElementById("title");
-        const content = document.querySelector(".content");
-
-        switch (game) {
-            case "cod1":
-                title.innerHTML = "Call Of Duty: <br> Classic";
-                content.style.backgroundImage = 'url("../assets/game_background/test.jpg")';
-                break;
-            case "cod_united_offensive":
-                title.innerHTML = "Call Of Duty: <br> United Offensive";
-                content.style.backgroundImage = 'url("../assets/game_background/cod_uo_background.jpeg")';
-                break;
-            case "cod2":
-                title.innerHTML = "Call Of Duty: 2 <br> Classic";
-                content.style.backgroundImage = 'url("../assets/game_background/cod_2_background.webp")';
-                break;
-        }
-    }
 
 
-    // Récupérer la div, la modal et le bouton de fermeture
-    const buttonSettings = document.querySelector('.button-settings');
-    const modal = document.getElementById('modal');
-    const closeButton = document.getElementById('close-button');
-
-    // Ajouter un gestionnaire d'événement au clic sur la div
-    buttonSettings.addEventListener('click', function() {
-        // Afficher la modal
-        modal.style.display = 'block';
-
-        // Ajouter la classe d'animation pour le slide-in
-        modal.classList.add('slide-in');
-    });
-
-    // Ajouter un gestionnaire d'événement au clic sur le bouton de fermeture
-    closeButton.addEventListener('click', function() {
-        // Ajouter la classe d'animation pour le slide-out
-        modal.classList.add('slide-out');
-
-        // Supprimer la classe d'animation pour le slide-in
-        modal.classList.remove('slide-in');
-    });
-
-    // Ajouter un gestionnaire d'événement pour réinitialiser la modal après l'animation de fermeture
-    modal.addEventListener('animationend', function() {
-        // Vérifier si l'animation est celle du slide-out
-        if (modal.classList.contains('slide-out')) {
-            // Masquer la modal
-            modal.style.display = 'none';
-
-            // Supprimer la classe d'animation pour réinitialiser la prochaine fois
-            modal.classList.remove('slide-out');
-        }
-    });
-
-    const form = document.getElementById('saveSettings');
-    form.addEventListener('submit', function(event) {
-        event.preventDefault(); // Empêche la soumission par défaut du formulaire
-        const selectedFolder = document.getElementById('selected-folder-text').value;
-
-        // Appeler la fonction setSettings après avoir récupéré la valeur
-        setSettings("COD1", selectedFolder);
-
-        // Récupérer la référence à la modal après avoir appelé setSettings
-        const modal = document.getElementById('modal');
-
-            // Masquer la modal après un court délai pour permettre l'animation
-            setTimeout(function() {
-                modal.style.display = 'none';
-            }, 200); // Temps en millisecondes, ajustez-le selon la durée de votre animation
-
-        modal.classList.remove('slide-out');
-    });
-
-
-
-</script>
-
+<script  src="../assets/js/index.js"></script>
 <script src="../gameAction/roomManager.js"></script>
-
-<script src="../gameAction/gameSettings.js"></script>
+<script  src="../gameAction/gameSettings.js"></script>
 <script src="../gameAction/gameStart.js"></script>
 <script src="../gameAction/roomManager.js"></script>
 </body>
