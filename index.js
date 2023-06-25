@@ -1,11 +1,11 @@
 const { app, BrowserWindow, ipcMain, dialog } = require('electron');
 const path = require('path');
 
-
 function createWindow () {
 
     ipcMain.handle('getUserDataPath', (event) => {
         const userDataPath = app.getPath('userData');
+        console.log(userDataPath);
         return userDataPath;
     });
 
