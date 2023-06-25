@@ -1,6 +1,7 @@
 * {
     padding: 0;
     margin: 0;
+    font-family: 'Poppins';
 }
 
 .container {
@@ -11,6 +12,15 @@
 
 .title {
     color : white;
+    text-transform: uppercase;
+}
+
+.room-name {
+    color : white;
+}
+
+.room-status {
+    color : white;
 }
 
 .game-column {
@@ -18,11 +28,10 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
-    gap: 5rem;
-    align-items: center;
-    justify-content: center;
+    gap: 2rem;
+    align-items: start;
+    padding: 5rem;
 }
-
 
 .player-column {
     width: 70vw;
