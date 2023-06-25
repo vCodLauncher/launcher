@@ -4,7 +4,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Krona+One&family=Poppins:wght@300;400;500;600;700&family=Staatliches&display=swap"
       rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/simplebar@5.3.0/dist/simplebar.min.css">
+<script src="https://unpkg.com/simplebar@5.3.0/dist/simplebar.min.js"></script>
 <body>
+<div class="simplebar" style="height: 100vh;">
 <section class="main">
 
     <div class="content">
@@ -120,4 +123,9 @@
 <script  src="../gameAction/gameSettings.js"></script>
 <script src="../gameAction/gameStart.js"></script>
 <script src="../gameAction/roomManager.js"></script>
+</div>
+<script>
+    new SimpleBar(document.querySelector('.simplebar'));
+</script>
+
 </body>
