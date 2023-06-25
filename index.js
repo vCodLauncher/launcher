@@ -31,7 +31,7 @@ function createWindow () {
         }
     })
     /*win.setMenu(null)*/
-    win.loadFile(path.join(__dirname, 'templates/index.html'))
+    win.loadFile(path.join(__dirname, 'templates/login.html'))
 }
 
 app.whenReady().then(() => {
