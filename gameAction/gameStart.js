@@ -1,15 +1,12 @@
 const { exec } = require('child_process');
-const fs = require('fs');
 const { isWindows, isMac, isLinux } = require('../utils/checkOs');
 
-let gamePaths;
-if (fs.existsSync('gamePaths.json')) {
-    gamePaths = JSON.parse(fs.readFileSync('gamePaths.json'));
-} else {
-    gamePaths = {};
-}
 
-let currentGamePath = 'C:\\Program Files\\COD1';
+async function mainStart() {
+    let currentGamePath = await getSettings('gamePathCOD1');
+
+
+console.log(currentGamePath);
 
 let startCmd = '';
 
@@ -55,3 +52,6 @@ function stopLoading() {
     button.childNodes[3].innerHTML = "Launch game";
     button.classList.remove("loading");
 }
+}
+
+mainStart();

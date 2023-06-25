@@ -81,12 +81,10 @@ body {
 }
 
 .game-title {
-    font-family: Poppins;
     font-size: 4.5rem;
     color: white;
-    text-align: center;
     text-align: left;
-    font-family: 'Staatliches', cursive;
+    font-family: 'Staatliches', sans-serif;
 }
 
 .container-button {
@@ -104,7 +102,7 @@ body {
     border-radius: 30px;
     cursor: pointer;
     padding-left: 1rem;
-    font-family: Poppins;
+    font-family: Poppins, sans-serif;
     text-transform: uppercase;
     font-weight: 500;
     font-size: 1.1rem;
@@ -146,9 +144,7 @@ body {
     align-items: center;
     border-radius: 30px;
     cursor: pointer;
-    display: flex;
     justify-content: center;
-    align-items: center;
 }
 
 .room-container {
@@ -161,7 +157,7 @@ body {
 }
 
 .room-container-title {
-    font-family: Poppins;
+    font-family: Poppins, sans-serif;
     color: white;
     text-transform: uppercase;
     font-size: 25px;
@@ -188,7 +184,7 @@ body {
 }
 
 .room-title {
-    font-family: Poppins;
+    font-family: Poppins, sans-serif;
     color: white;
     font-size: 1.1rem;
     margin-left: 1rem;
@@ -198,10 +194,127 @@ body {
 }
 
 .room-online {
-    font-family: Poppins;
+    font-family: Poppins, sans-serif;
     color: white;
     font-size: 14px;
     margin-left: 1rem;
     margin-top: 0.5rem;
     text-transform: uppercase;
+}
+
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    font-family: Poppins, sans-serif;
+    position: relative;
+    background-color: #fefefe;
+    width: 50%;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in-out;
+    align-items: center;
+    padding: 10px 2rem;
+    margin: 0 auto;
+}
+.modal-header {
+    font-family: Poppins, sans-serif;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    background-color: #fefefe;
+    width: 50%;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in-out;
+    align-items: center;
+    padding: 10px 2rem;
+    margin: 20% auto 0;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.modal-footer {
+    font-family: Poppins, sans-serif;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    background-color: #fefefe;
+    width: 50%;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in-out;
+    align-items: center;
+    margin: 0 auto;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 10px 2rem 30px;
+}
+
+.slide-in {
+    animation-name: slideIn;
+}
+
+.slide-out {
+    animation-name: slideOut;
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0); }
+}
+
+@keyframes slideOut {
+    from { transform: translateY(0); }
+    to { transform: translateY(-100%); }
+}
+.browse-button {
+    background-color: #000;
+    color: #fff;
+    font-family: Poppins, sans-serif;
+    font-size: 1rem;
+    border: solid 1px #000;
+    border-radius: 30px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.input-folder {
+    color: #000;
+    font-family: Poppins, sans-serif;
+    font-size: 1rem;
+    border: solid 0 #fff;
+    padding: 5px 10px;
+    cursor: pointer;
+    width: 80%;
+    border-radius: 30px;
+}
+
+.browse-game {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+}
+
+.setting-name{
+    font-family: Poppins, sans-serif;
+    color: black;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.save-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    width: 100%;
 }

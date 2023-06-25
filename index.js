@@ -1,7 +1,25 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain, dialog } = require('electron');
 const path = require('path');
 
+
 function createWindow () {
+
+    ipcMain.handle('getUserDataPath', (event) => {
+        const userDataPath = app.getPath('userData');
+        return userDataPath;
+    });
+
+    ipcMain.on('open-folder-dialog', (event) => {
+        dialog.showOpenDialog({ properties: ['openDirectory'] })
+            .then(result => {
+                const selectedDirectory = result.filePaths[0];
+                event.sender.send('selected-folder', selectedDirectory);
+            })
+            .catch(err => {
+                console.error(err);
+            });
+    });
+
     const win = new BrowserWindow({
         width: 1400,
         height: 900,
@@ -21,6 +39,7 @@ app.whenReady().then(() => {
 
     app.on('activate', function () {
         if (BrowserWindow.getAllWindows().length === 0) createWindow()
+
     })
 })
 
