@@ -30,6 +30,7 @@ function createWindow () {
             enableRemoteModule: true
         }
     })
+    /*win.setMenu(null)*/
     win.loadFile(path.join(__dirname, 'templates/index.html'))
 }
 

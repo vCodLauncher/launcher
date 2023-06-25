@@ -1,13 +1,6 @@
 const { exec } = require('child_process');
 const { isWindows, isMac, isLinux } = require('../utils/checkOs');
 
-
-async function mainStart() {
-    let currentGamePath = await getSettings('COD1');
-
-
-console.log(currentGamePath);
-
 let startCmd = '';
 
 if (isMac) {
@@ -18,6 +11,7 @@ if (isMac) {
 
 
 function startLoading() {
+
     const button = document.querySelector(".button-play");
     button.classList.add("loading");
     button.childNodes[3].innerHTML = "Loading...";
@@ -26,15 +20,18 @@ function startLoading() {
 
 }
 
-document.querySelector('.button-play').addEventListener('click', () => {
+document.querySelector('.button-play').addEventListener('click', async () => {
+    console.log(localStorage.getItem('gameName'));
+    let currentGamePath = await getSettings(localStorage.getItem('gameName'));
+
     if (!currentGamePath) {
-        console.error('No game selected');
+        displayNotification('Error : Game Not Found', "#ff0000");
         return;
     }
 
     startLoading();
 
-    exec(startCmd+' +connect 127.0.0.1', { cwd: currentGamePath }, (error, stdout, stderr) => {
+    exec(startCmd + ' +connect 127.0.0.1', {cwd: currentGamePath}, (error, stdout, stderr) => {
         if (error) {
             console.error(`exec error: ${error}`);
             return;
@@ -52,6 +49,6 @@ function stopLoading() {
     button.childNodes[3].innerHTML = "Launch game";
     button.classList.remove("loading");
 }
-}
 
-mainStart();
+
+
