@@ -5,7 +5,6 @@ function createWindow () {
 
     ipcMain.handle('getUserDataPath', (event) => {
         const userDataPath = app.getPath('userData');
-        console.log(userDataPath);
         return userDataPath;
     });
 
