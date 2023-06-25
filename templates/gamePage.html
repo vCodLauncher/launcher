@@ -1,17 +1,21 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="css/gamePage.css">
-    <title>Game Page</title>
-</head>
-<body>
-<h1 id="room-type"></h1>
-<div class="button-play" onclick="startLoading()" />
-<button id="quit-btn">Quitter</button>
+<link rel="stylesheet" href="../assets/css/gamepage.css" xmlns="" xmlns="http://www.w3.org/1999/html">
+<title>Game Page</title>
+
+<section class="container">
+    <div class="game-column">
+        <h1 id="room-type" class="title"></h1>
+        <h4>
+            <span id="room-id">Lobby-61718.codlauncher.net</span> <br />
+            <span id="room-server-status">Server : <span style="color : green">ON</span></span>
+        </h4>
+        <div id="quit-btn" class="leave-button">Quitter</div>
+    </div>
+
+    <div class="player-column">
+
+    </div>
+</section>
 
 <script src="../gameAction/gameStart.js"></script>
 <script src="../gameAction/gamePage.js"></script>
 <script src="../gameAction/roomManager.js"></script>
-</body>
-</html>
