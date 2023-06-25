@@ -1,6 +1,8 @@
+html,
 body {
     margin: 0;
     padding: 0;
+    overflow: hidden;
 }
 
 .main {
@@ -353,3 +355,4 @@ body {
     0%, 100% { opacity: 0; }
     35%, 65% { opacity: 1; }
 }
+
