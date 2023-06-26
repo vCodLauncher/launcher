@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const password = document.getElementById('password').value;
         const data = { email, password };
         //post request to server
-        fetch('http://localhost:3000/auth/login', {
+        fetch('http://193.38.250.89:3000/auth/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
