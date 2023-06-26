@@ -2,7 +2,11 @@ function updateRoomCounts() {
     let roomTypes = ['team-deathmatch', 'search-and-destroy', 'deathmatch', 'gungame'];
 
     roomTypes.forEach(roomType => {
-        fetch(`http://193.38.250.89:3000/room/team-deathmatch`)
+        fetch(`http://193.38.250.89:3000/room/team-deathmatch`, {
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+        })
             .then(response => response.json())
             .then(data => {
                 // Mettre à jour l'affichage du nombre de joueurs dans la room

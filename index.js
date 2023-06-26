@@ -9,7 +9,7 @@ function createWindow () {
     });
 
     ipcMain.on('open-folder-dialog', (event) => {
-        dialog.showOpenDialog({ properties: ['openDirectory'] })
+        dialog.showOpenDialog({properties: ['openDirectory']})
             .then(result => {
                 const selectedDirectory = result.filePaths[0];
                 event.sender.send('selected-folder', selectedDirectory);
@@ -30,8 +30,8 @@ function createWindow () {
             enableRemoteModule: true
         }
     })
-    /*win.setMenu(null)*/
-    win.loadFile(path.join(__dirname, 'templates/login.html'))
+        win.loadFile(path.join(__dirname, 'templates/index.html'))
+
 }
 
 app.whenReady().then(() => {

@@ -89,3 +89,9 @@ body {
     height: 200px;
     margin: auto auto 20px;
 }
+.error {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+    text-align: center;
+}

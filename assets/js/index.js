@@ -1,5 +1,34 @@
 
 document.addEventListener("DOMContentLoaded", function() {
+// Vérifier la valeur du token dans le LocalStorage
+    const token = localStorage.getItem('token');
+
+// Si le token est vide ou indéfini, rediriger vers la page de connexion
+    if (!token) {
+        window.location.href = 'login.html#'; // Remplacez "login.html" par l'URL de votre page de connexion
+    }
+
+
+    function checkToken() {
+
+            fetch(`http://193.38.250.89:3000/auth/me`, {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                }
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        localStorage.removeItem('token');
+                        window.location.href = 'login.html#';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+    }
+
+    setInterval(checkToken, 5000);
 
     if (localStorage.getItem('gameName') === null) {
         localStorage.setItem('gameName', 'cod1');

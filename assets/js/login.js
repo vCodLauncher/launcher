@@ -21,9 +21,17 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .then(response => response.json())
         .then(data => {
+            if (data.error) {
+                const errorDiv = document.getElementById('error');
+                errorDiv.textContent = data.error;
+                return;
+            }
             localStorage.setItem('token', data.token);
+            window.location.reload();
         }).catch((error) => {
             console.error('Error:', error);
+            const errorDiv = document.getElementById('error');
+            errorDiv.textContent = error;
         });
     })
 })
