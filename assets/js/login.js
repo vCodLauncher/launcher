@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (localStorage.getItem('token')) {
         window.location.href = "index.html";
-    }
+    };
 
     const form = document.getElementById('login');
 
