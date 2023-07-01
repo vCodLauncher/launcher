@@ -1,0 +1,73 @@
+html,body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.container {
+    background-color: #383636;
+    color: white;
+    font-family: Poppins, sans-serif;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+
+}
+
+.logo {
+    width: 35%;
+    height: auto;
+    animation: spin 1.5s ease-in-out infinite;
+    -webkit-animation: spin 1.5s ease-in-out infinite;
+}
+
+#wait {
+    transition: all 0.2s ease;
+}
+
+@keyframes spin {
+    to { -webkit-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+    to { -webkit-transform: rotate(360deg); }
+}
+
+
+.progress {
+    -webkit-appearance: none;
+    appearance: none;
+    border: none;
+    border-radius: 10px;
+    height: 10px;
+    width: 80%;
+    display: none;
+}
+
+.progress::-webkit-progress-bar {
+    background-color: #706a6a;
+}
+
+.progress::-webkit-progress-bar,
+.progress::-webkit-progress-value {
+    border-radius: 10px;
+}
+
+.progress::-moz-progress-bar {
+    border-radius: 10px;
+}
+
+.progress1::-webkit-progress-value {
+    background: #9d934c;
+}

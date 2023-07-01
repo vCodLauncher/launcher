@@ -1,0 +1,97 @@
+body {
+    background-image: url("../game_background/login.jpg");
+    font-family: Poppins, sans-serif;
+    overflow-x: hidden;
+}
+
+.container {
+    margin-top: 10%;
+    margin-bottom: 10%;
+    width: 100%;
+    position: absolute;
+    text-align: center;
+
+}
+
+.login-container {
+    padding: 30px;
+    background-color: #fff;
+    box-shadow: 5px 5px 50px black;
+    border-radius: 10px;
+    width: 30%;
+    margin: auto;
+}
+
+.login-input-container {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-label {
+    font-family: Poppins, sans-serif;
+    color: black;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: left;
+    float: left;
+}
+
+.login-input {
+    text-align: left;
+    font-size: 14px;
+    font-weight: 500;
+    color: #000;
+    margin-bottom: 18px;
+    padding: 10px 10px 10px 0;
+    border: solid 0 #fff;
+    border-bottom: solid 2px #000;
+}
+
+
+
+.login-title-content {
+    background-color: #dde8e8;
+    width: 8rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    border-radius: 30px;
+    justify-content: center;
+
+    margin: 0 auto;
+}
+
+.login-title {
+    background-color: #000000;
+    border-radius: 30px;
+    color: white;
+    font-size: 1.3rem;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.login-btn {
+    margin-top: 20px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 10px 50px 10px 50px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.logo {
+    width: 200px;
+    height: 200px;
+    margin: auto auto 20px;
+}
+.error {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+    text-align: center;
+}
