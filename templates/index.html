@@ -13,6 +13,14 @@
 
         <div class="content">
             <div class="navbar">
+                <div class="navbar-container-hub">
+                    <div class="navbar-game">
+                        <img src="../assets/icon/maison.png" width="28" height="28"/>
+                    </div>
+                    <div class="navbar-game">
+                        <img src="../assets/icon/carte-de-shopping.png" width="28" height="28"/>
+                    </div>
+                </div>
                 <div class="navbar-container-game">
                     <div class="navbar-game" id="game1" onclick="switchGame('cod1', this)">
                         <img src="../assets/game_logo/cod_1_logo.png" width="42" height="42">
@@ -27,6 +35,9 @@
 
                     </div>
                 </div>
+                <div class="navbar-not-show">
+
+                </div>
             </div>
             <div class="game-container">
                 <div id="notification" class="notification">Test</div>
@@ -36,9 +47,10 @@
                 </h1>
                 <div class="container-button">
                     <div class="button-play" onclick="startLoading()">
-                            <img class="play-icon" id="play-icon" src="../assets/icon/button-play.png" width="32" height="32">
-                            <p>Launch game</p>
-                            <div class="loader"></div>
+                        <img class="play-icon" id="play-icon" src="../assets/icon/button-play.png" width="32"
+                             height="32">
+                        <p>Launch game</p>
+                        <div class="loader"></div>
                     </div>
                     <div class="button-settings">
                         <img class="play-icon" src="../assets/icon/reglages.png" width="32" height="32">
@@ -48,9 +60,9 @@
                     <p id="current-version">1.1x</p><i class="arrow down"></i>
                 </div>
                 <div id="version-dropdown" class="version-dropdown">
-                <ul id="version-list" class="version-list">
+                    <ul id="version-list" class="version-list">
 
-                </ul>
+                    </ul>
                 </div>
 
 
@@ -93,6 +105,9 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="user-bar-container">
+
             </div>
         </div>
         <div class="footer">

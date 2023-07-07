@@ -37,10 +37,26 @@ body {
     width: 6vw;
     height: 100%;
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
     /*border-right: 1px solid #484747;*/
+}
+
+.navbar-container-hub {
+    background-color: #111010;
+    width: 80%;
+    height: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1.5rem;
+    border-radius: 30px;
+    margin-top: 3rem;
+}
+
+.navbar-not-show {
+
 }
 
 
@@ -49,7 +65,7 @@ body {
 }
 
 .navbar-container-game {
-    background-color: black;
+    background-color: #111010;
     width: 80%;
     height: 45%;
     display: flex;
@@ -58,6 +74,7 @@ body {
     flex-direction: column;
     gap: 1.5rem;
     border-radius: 30px;
+    margin-top: 3rem;
 }
 
 .navbar-game {
@@ -518,4 +535,12 @@ body {
 
 .down {
 margin-top: -5px;
+}
+
+/*
+    USer bar
+ */
+
+.user-bar-container {
+    width: 14vw;
 }
