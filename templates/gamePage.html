@@ -16,6 +16,69 @@
             <div id="quit-btn" class="leave-button">Leave room</div>
         </div>
         <div class="map-vote-container">
+
+            <div class="map-menu">
+                <div class="map-menu-row">
+                    <div class="map">
+                        <p>
+                            Carentan
+                        </p>
+                        <img src="../assets/room_img/map/mp_carentan.png" class="map-menu-img">
+                    </div>
+                    <div class="map">
+                        <p>
+                            Neuville
+                        </p>
+                        <img src="../assets/room_img/map/mp_neuville.png" class="map-menu-img">
+                    </div>
+                    <div class="map">
+                        <p>
+                            Hurgten
+                        </p>
+                        <img src="../assets/room_img/map/mp_hurgten.png" class="map-menu-img">
+                    </div>
+                    <div class="map">
+                        <p>
+                            Harbor
+                        </p>
+                        <img src="../assets/room_img/map/mp_harbor.png" class="map-menu-img">
+                    </div>
+                </div>
+                <div class="map-menu-row">
+                    <div class="map">
+                        <p>
+                            Powcamp
+                        </p>
+                        <img src="../assets/room_img/map/mp_powcamp.png" class="map-menu-img">
+                    </div>
+                    <div class="map">
+                        <p>
+                            Powcamp
+                        </p>
+                        <img src="../assets/room_img/map/mp_powcamp.png" class="map-menu-img">
+                    </div>
+                    <div class="map">
+                        <p>
+                            Stalingrad
+                        </p>
+                        <img src="../assets/room_img/map/mp_stalingrad.png" class="map-menu-img">
+                    </div>
+                    <div class="map">
+                        <p>
+                            Powcamp
+                        </p>
+                        <img src="../assets/room_img/map/mp_powcamp.png" class="map-menu-img">
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                document.querySelector('.map-vote-container').addEventListener('click', function() {
+                    const mapMenu = this.querySelector('.map-menu');
+                    mapMenu.style.display = mapMenu.style.display === 'none' ? 'flex' : 'none';
+                });
+            </script>
+
             <div>
                 <p class="map-title">
                     Carentan | 5 votes
@@ -37,7 +100,74 @@
     </div>
 
     <div class="player-column">
+        <div class="player-list">
+            <h3 class="player-title">
+                Need 2 more players to start the game ...
+            </h3>
+            <div class="player-table">
+                <div class="player">
+                    <p>wysix</p>
+                    <div class="player-info">
+                        <ul>
+                            <li><strong>Score:</strong> 5000</li>
+                            <li><strong>Games Played:</strong> 150</li>
+                            <li><strong>Wins:</strong> 90</li>
+                        </ul>
+                    </div>
+                </div>
+                <p>
+                    Dodo le reporter
+                </p>
+                <p class="searching">
+                    Searching players <span>.</span><span>.</span><span>.</span>
+                </p>
+                <p class="searching">
+                    Searching players <span>.</span><span>.</span><span>.</span>
+                </p>
+                <p class="searching">
+                    Searching players <span>.</span><span>.</span><span>.</span>
+                </p>
+                <p class="searching">
+                    Searching players <span>.</span><span>.</span><span>.</span>
+                </p>
+                <p class="searching">
+                    Searching players <span>.</span><span>.</span><span>.</span>
+                </p>
+                <p class="searching">
+                    Searching players <span>.</span><span>.</span><span>.</span>
+                </p>
+                <p class="searching">
+                    Searching players <span>.</span><span>.</span><span>.</span>
+                </p>
+                <p class="searching">
+                    Searching players <span>.</span><span>.</span><span>.</span>
+                </p>
+                <p class="searching">
+                    Searching players <span>.</span><span>.</span><span>.</span>
+                </p>
+                <p class="searching">
+                    Searching players <span>.</span><span>.</span><span>.</span>
+                </p>
+                <p class="searching">
+                    Searching players <span>.</span><span>.</span><span>.</span>
+                </p>
+                <p class="searching">
+                    Searching players <span>.</span><span>.</span><span>.</span>
+                </p>
+            </div>
+        </div>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                var playerTable = document.querySelector('.player-table');
+                var playerSearchElems = playerTable.querySelectorAll('p');
 
+                playerSearchElems.forEach(function(elem) {
+                    if (elem.innerText === 'Searching players ...') {
+                        elem.classList.add('searching');
+                    }
+                });
+            });
+        </script>
     </div>
 </section>
 

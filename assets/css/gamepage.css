@@ -17,6 +17,9 @@ input, button, textarea, :focus {
     background-color: #1e1d1d;
     width: 100vw;
     height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
 }
 
 .title {
@@ -40,11 +43,6 @@ input, button, textarea, :focus {
     gap: 10rem;
     align-items: start;
     padding: 5rem;
-}
-
-.player-column {
-    width: 70vw;
-    height: 100vh;
 }
 
 .leave-button {
@@ -85,4 +83,162 @@ input, button, textarea, :focus {
 .map-img {
     width: 15rem;
     height: 7rem;
+}
+
+/* Player Column */
+
+.player-column {
+    width: 70vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.player-list {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+}
+
+.player-title {
+    color : white;
+    font-family: Poppins;
+}
+
+.player-table p {
+
+    padding: 10px 5px;
+    border-bottom: 1px solid #2c2c2c;
+    font-size: 16px;
+    position: relative;
+    color: white;
+}
+
+.player-table p:last-child {
+    border-bottom: none;
+}
+
+.player-table p.searching::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    border-radius: 50%;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+.player-table p.searching span {
+    opacity: 0;
+    animation: blink 1s infinite;
+}
+
+.player-table p.searching span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.player-table p.searching span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes blink {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+.player {
+    cursor: pointer;
+    position: relative;
+}
+
+.player-info {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translateX(-100%);
+    background: #1c1c1c;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    margin-left: -20px;
+    box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.2);
+    width: 200px;
+    z-index: 10;
+}
+
+.player-info ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.player-info ul li {
+    padding: 5px 0;
+}
+
+.player:hover .player-info {
+    display: block;
+}
+
+/*
+    Choose map
+ */
+
+.map-menu {
+    display: none;
+    position: absolute; /* changed from absolute to fixed */
+    top: 50%; /* center vertically */
+    left: 50%; /* center horizontally */
+    transform: translate(-50%, -50%); /* shift back by half of its width and height */
+    background-color: #181616;
+    padding: 1rem;
+    flex-direction: column;
+    z-index: 1;
+    width: 85vw;
+    height: 50vh;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+}
+
+.map-menu-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12rem; /* espace entre les cartes */
+}
+
+.map {
+    width: 100px;
+    height: 100px;
+    background: #333;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 10px;
+    flex-direction: column;
+}
+
+
+.map > p {
+    text-align: left;
+}
+.map-menu-img {
+    width: 16rem !important;
+    height: 8rem !important;
 }
