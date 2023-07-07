@@ -7,6 +7,8 @@ if (isMac) {
     startCmd = 'wine64 CoDMP.exe';
 } else if (isWindows) {
     startCmd = 'CoDMP.exe';
+} else if (isLinux) {
+    startCmd = 'MESA_EXTENSION_MAX_YEAR=2004 wine CoDMP.exe';
 }
 
 
@@ -16,39 +18,53 @@ function startLoading() {
     button.classList.add("loading");
     button.childNodes[3].innerHTML = "Loading...";
 
-    setTimeout(stopLoading, 4500);
+    setTimeout(() => {
+        const button = document.querySelector(".button-play");
+        button.classList.remove('loading')
+        const icon = document.getElementById('play-icon');
+        button.childNodes[3].innerHTML = "Quit Game";
+        icon.src = "../assets/icon/x.png"
+    }, 6000);
 
 }
 
+let gameIsRunning = false;
+let runningGame;
 document.querySelector('.button-play').addEventListener('click', async () => {
-    console.log(localStorage.getItem('gameName'));
-    let currentGamePath = await getSettings(localStorage.getItem('gameName'));
+    if (gameIsRunning) {
+        runningGame.kill();
+    } else {
+        const curentVersion = document.getElementById('current-version').textContent;
+        let currentGamePath = await getSettings(gameName+'-'+curentVersion);
 
-    if (!currentGamePath) {
-        displayNotification('Error : Game Not Found', "#ff0000");
-        return;
-    }
-
-    startLoading();
-
-    exec(startCmd + ' +connect 127.0.0.1', {cwd: currentGamePath}, (error, stdout, stderr) => {
-        if (error) {
-            console.error(`exec error: ${error}`);
+        if (!currentGamePath) {
+            displayNotification('Error : Game Not Found', "#ff0000");
             return;
         }
-        console.log(`stdout: ${stdout}`);
-        console.error(`stderr: ${stderr}`);
 
-        stopLoading();
-    });
+        startLoading();
+
+        runningGame = exec(startCmd + ' ', {cwd: currentGamePath}, (error, stdout, stderr) => {
+            if (error) {
+                console.error(`exec error: ${error}`);
+                return;
+            }
+            console.log(`stdout: ${stdout}`);
+            console.error(`stderr: ${stderr}`);
+            gameIsRunning = true;
+        });
+
+        runningGame.on('exit', () => {
+            const button = document.querySelector(".button-play");
+            const icon = document.getElementById('play-icon');
+            button.childNodes[3].innerHTML = "Launch Game";
+            icon.src = "../assets/icon/button-play.png"
+            gameIsRunning = false;
+        });
+    }
+
+
 });
-
-
-function stopLoading() {
-    const button = document.querySelector(".button-play");
-    button.childNodes[3].innerHTML = "Launch game";
-    button.classList.remove("loading");
-}
 
 
 

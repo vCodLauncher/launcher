@@ -37,10 +37,7 @@ document.addEventListener("DOMContentLoaded", function() {
         switchGame(localStorage.getItem('gameName'));
     }
 
-    const selectedFolder = document.getElementById('selected-folder-text');
-    getSettings(localStorage.getItem('gameName')).then(data => {
-        selectedFolder.value = data || 'Aucun dossier sélectionné';
-    }) ;
+
 
     const game1 = document.getElementById("game1");
     const game2 = document.getElementById("game2");
@@ -76,14 +73,12 @@ function switchGame(game) {
     const currentVersion = document.getElementById("current-version");
     const content = document.querySelector(".content");
     const gameContainer = document.querySelector(".game-container");
+    const settingsContainer = document.querySelector(".modal-content");
 
 
     gameName = game;
 
-    const selectedFolder = document.getElementById('selected-folder-text');
-    getSettings(gameName).then(data => {
-        selectedFolder.value = data || 'Aucun dossier sélectionné';
-    }) ;
+
 
     const container = document.querySelector('.game-container')
     switch (game) {
@@ -100,7 +95,8 @@ function switchGame(game) {
             setTimeout(function() {
                 title.innerHTML = "Call Of Duty: <br> Classic";
                 versionList.innerHTML = `
-            <li class="version-item item-active" onclick="changeActiveItem(this)">1.1x</li>
+            <li class="version-item item-active" onclick="changeActiveItem(this)">1.1</li>
+            <li class="version-item" onclick="changeActiveItem(this)">1.1x</li>
             <li class="version-item" onclick="changeActiveItem(this)">1.2</li>
             <li class="version-item" onclick="changeActiveItem(this)">1.3</li>
             <li class="version-item" onclick="changeActiveItem(this)">1.4</li>
@@ -111,6 +107,43 @@ function switchGame(game) {
                 container.style.transform = "translateY(0)";
 
             }, 500);
+            settingsContainer.innerHTML = `                            <p class="setting-name">Game Location v1.1 :</p>
+                            <div class="browse-game" onclick="openBrowseDialog(this)" id="cod1-1.1">
+                                <button class="browse-button" type="button">Browse</button>
+                                <input id="selected-folder-text" class="input-folder" value=""
+                                       disabled/>
+                            </div>
+                            <p class="setting-name">Game Location v1.1X :</p>
+                            <div class="browse-game" onclick="openBrowseDialog(this)" id="cod1-1.1x">
+                                <button class="browse-button" type="button">Browse</button>
+                                <input id="selected-folder-text" class="input-folder" value=""
+                                       disabled/>
+                            </div>
+                            <p class="setting-name">Game Location v1.2 :</p>
+                            <div class="browse-game" onclick="openBrowseDialog(this)" id="cod1-1.2">
+                                <button class="browse-button" type="button">Browse</button>
+                                <input id="selected-folder-text" class="input-folder" value=""
+                                       disabled/>
+                            </div>
+                            <p class="setting-name">Game Location v1.3 :</p>
+                            <div class="browse-game" onclick="openBrowseDialog(this)" id="cod1-1.3">
+                                <button class="browse-button" type="button">Browse</button>
+                                <input id="selected-folder-text" class="input-folder" value=""
+                                       disabled/>
+                            </div>
+                            <p class="setting-name">Game Location v1.4 :</p>
+                            <div class="browse-game"  onclick="openBrowseDialog(this)" id="cod1-1.4">
+                                <button class="browse-button" type="button">Browse</button>
+                                <input id="selected-folder-text" class="input-folder" value=""
+                                       disabled/>
+                            </div>
+                                                        <p class="setting-name">Game Location v1.5 :</p>
+                            <div class="browse-game" onclick="openBrowseDialog(this)" id="cod1-1.5">
+                                <button class="browse-button" type="button">Browse</button>
+                                <input id="selected-folder-text" class="input-folder" value=""
+                                       disabled/>
+                            </div>
+`;
             break;
         case "cod_united_offensive":
             container.style.opacity = 0;
@@ -132,6 +165,20 @@ function switchGame(game) {
                 container.style.opacity = 1;
                 container.style.transform = "translateY(0)";
             }, 500);
+            settingsContainer.innerHTML = `
+                            <p class="setting-name">Game Location v1.41 :</p>
+                            <div class="browse-game" onclick="openBrowseDialog(this)" id="cod_united_offensive-1.41">
+                                <button class="browse-button" type="button">Browse</button>
+                                <input id="selected-folder-text" class="input-folder" value=""
+                                       disabled/>
+                            </div>
+                            <p class="setting-name">Game Location v1.51 :</p>
+                            <div class="browse-game" onclick="openBrowseDialog(this)" id="cod_united_offensive-1.51">
+                                <button class="browse-button" type="button">Browse</button>
+                                <input id="selected-folder-text" class="input-folder" value=""
+                                       disabled/>
+                            </div>
+                            `;
             break;
         case "cod2":
             container.style.opacity = 0;
@@ -154,8 +201,36 @@ function switchGame(game) {
                 container.style.opacity = 1;
                 container.style.transform = "translateY(0)";
             }, 500);
+            settingsContainer.innerHTML = `
+                            <p class="setting-name">Game Location v1.0 :</p>
+                            <div class="browse-game" onclick="openBrowseDialog(this)" id="cod2-1.0">
+                                <button class="browse-button" type="button">Browse</button>
+                                <input id="selected-folder-text" class="input-folder" value=""
+                                       disabled/>
+                            </div>
+                            <p class="setting-name">Game Location v1.2 :</p>
+                            <div class="browse-game" onclick="openBrowseDialog(this)" id="cod2-1.2">
+                                <button class="browse-button" type="button">Browse</button>
+                                <input id="selected-folder-text" class="input-folder" value=""
+                                       disabled/>
+                            </div>
+                                                        <p class="setting-name">Game Location v1.3 :</p>
+                            <div class="browse-game" onclick="openBrowseDialog(this)" id="cod2-1.3">
+                                <button class="browse-button" type="button">Browse</button>
+                                <input id="selected-folder-text" class="input-folder" value=""
+                                       disabled/>
+                            </div>
+                            `;
             break;
     }
+
+    const browseGame = document.getElementsByClassName('browse-game');
+    browseGame.forEach( game => {
+
+        getSettings(game.id).then(data => {
+            game.querySelector('.input-folder').value = data || 'No directory selected';
+        }) ;
+    });
 }
 
 function resetMenu() {
@@ -169,6 +244,7 @@ function resetMenu() {
 // Récupérer la div, la modal et le bouton de fermeture
 const buttonSettings = document.querySelector('.button-settings');
 const modal = document.getElementById('modalCOD1');
+const modalitemCOD1 = document.getElementById('modalitemCOD1');
 const closeButton = document.getElementById('close-button');
 
 // Ajouter un gestionnaire d'événement au clic sur la div
@@ -176,48 +252,34 @@ buttonSettings.addEventListener('click', function() {
     // Afficher la modal
     modal.style.display = 'block';
 
-    // Ajouter la classe d'animation pour le slide-in
-    modal.classList.add('slide-in');
+    modal.style.opacity = '1';
+    modalitemCOD1.classList.remove('slide-out');
+    modalitemCOD1.classList.add('slide-in');
 });
 
 // Ajouter un gestionnaire d'événement au clic sur le bouton de fermeture
 closeButton.addEventListener('click', function() {
-    // Ajouter la classe d'animation pour le slide-out
-    modal.classList.add('slide-out');
-
-    // Supprimer la classe d'animation pour le slide-in
-    modal.classList.remove('slide-in');
+        modalitemCOD1.classList.remove('slide-in');
+        modalitemCOD1.classList.add('slide-out');
+        modal.style.opacity = '0';
+        setTimeout(function() {
+            modal.style.display = 'none';
+        }, 500); // Attendre 500 ms (0.5s) avant de masquer la modal
 });
 
-// Ajouter un gestionnaire d'événement pour réinitialiser la modal après l'animation de fermeture
-modal.addEventListener('animationend', function() {
-    // Vérifier si l'animation est celle du slide-out
-    if (modal.classList.contains('slide-out')) {
-        // Masquer la modal
-        modal.style.display = 'none';
-
-        // Supprimer la classe d'animation pour réinitialiser la prochaine fois
-        modal.classList.remove('slide-out');
-    }
-});
 
 const form = document.getElementById('saveSettings');
 form.addEventListener('submit', function(event) {
     event.preventDefault(); // Empêche la soumission par défaut du formulaire
-    const selectedFolder = document.getElementById('selected-folder-text').value;
+    const browseGame = document.getElementsByClassName('browse-game');
+    browseGame.forEach(game => {
+        const value = game.querySelector('.input-folder').value;
+        if (!value.startsWith('No')) {
+            setSettings(game.id, value);
+        }
 
-    // Appeler la fonction setSettings après avoir récupéré la valeur
-    setSettings(gameName, selectedFolder);
+    });
 
-    // Récupérer la référence à la modal après avoir appelé setSettings
-    const modal = document.getElementById('modalCOD1');
-
-    // Masquer la modal après un court délai pour permettre l'animation
-    setTimeout(function() {
-        modal.style.display = 'none';
-    }, 200); // Temps en millisecondes, ajustez-le selon la durée de votre animation
-
-    modal.classList.remove('slide-out');
 });
 
 function displayNotification(message, color) {

@@ -94,20 +94,20 @@ function getSettings(paramName) {
         });
 }
 
-const selectFolderButton = document.getElementById('select-folder');
-const selectedFolderText = document.getElementById('selected-folder-text');
+function openBrowseDialog(element) {
+    ipcRenderer.removeAllListeners('selected-folder');
+        ipcRenderer.send('open-folder-dialog');
 
-selectFolderButton.addEventListener('click', () => {
-    ipcRenderer.send('open-folder-dialog');
-});
+    ipcRenderer.on('selected-folder', (event, folderPath) => {
+        if (!folderPath || folderPath === '') {
+            element.getElementsByClassName("input-folder")[0].value = 'Aucun dossier sélectionné';
+        }else {
+            element.getElementsByClassName("input-folder")[0].value = folderPath;
+        }
+    });
+}
 
-ipcRenderer.on('selected-folder', (event, folderPath) => {
-    if (!folderPath || folderPath === '') {
-        selectedFolderText.value = 'Aucun dossier sélectionné';
-    }else {
-    selectedFolderText.value = folderPath;
-    }
-});
+
 
 module.exports = {
     setSettings,

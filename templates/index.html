@@ -6,6 +6,7 @@
       rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/simplebar@5.3.0/dist/simplebar.min.css">
 <script src="https://unpkg.com/simplebar@5.3.0/dist/simplebar.min.js"></script>
+<meta charset="UTF-8">
 <body>
 <div class="simplebar" style="height: 100vh;">
     <section class="main">
@@ -35,7 +36,7 @@
                 </h1>
                 <div class="container-button">
                     <div class="button-play" onclick="startLoading()">
-                            <img class="play-icon" src="../assets/icon/button-play.png" width="32" height="32">
+                            <img class="play-icon" id="play-icon" src="../assets/icon/button-play.png" width="32" height="32">
                             <p>Launch game</p>
                             <div class="loader"></div>
                     </div>
@@ -51,32 +52,7 @@
 
                 </ul>
                 </div>
-                <div id="modalCOD1" class="modal">
-                    <div class="modal-header">
-                        <h2 id="settingsTitle">Call Of Duty: Classic - Settings</h2>
-                        <div class="button-settings" id="close-button">
-                            <img class="play-icon" src="../assets/icon/x.png" width="32" height="32">
-                        </div>
 
-                    </div>
-                    <form id="saveSettings">
-                        <div class="modal-content">
-                            <p class="setting-name">Game Location :</p>
-                            <div class="browse-game" id="select-folder">
-                                <button class="browse-button" type="button">Browse</button>
-                                <input id="selected-folder-text" class="input-folder" value="Aucun dossier sélectionné"
-                                       disabled/>
-                            </div>
-
-                        </div>
-
-                        <div class="modal-footer">
-                            <div class="save-footer">
-                                <button type="submit" class="browse-button">Save</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
 
                 <div class="room-container">
                     <h1 class="room-container-title">
@@ -123,11 +99,33 @@
 
         </div>
     </section>
+    <div class="modal-container" id="modalCOD1">
+        <div id="modalitemCOD1" class="modal">
+            <div class="modal-header">
+                <h2 id="settingsTitle">Call Of Duty: Classic - Settings</h2>
+                <div class="button-settings" id="close-button">
+                    <img class="play-icon" src="../assets/icon/x.png" width="32" height="32">
+                </div>
 
+            </div>
+            <form id="saveSettings">
+                <div class="modal-content">
 
+                </div>
+
+                <div class="modal-footer">
+                    <div class="save-footer">
+                        <button type="submit" class="browse-button">Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../gameAction/gameSettings.js"></script>
     <script src="../assets/js/index.js"></script>
     <script src="../gameAction/roomManager.js"></script>
-    <script src="../gameAction/gameSettings.js"></script>
+
     <script src="../gameAction/gameStart.js"></script>
     <script src="../gameAction/roomManager.js"></script>
     <script src="../gameAction/versionSwitch.js"></script>

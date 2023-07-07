@@ -6,9 +6,9 @@ var pjson = require('./package.json');
 function createWindow() {
     ipcMain.handle('getUserDataPath', (event) => {
         const userDataPath = app.getPath('userData');
+        console.log(userDataPath)
         return userDataPath;
     });
-
     ipcMain.on('open-folder-dialog', (event) => {
         dialog
             .showOpenDialog({ properties: ['openDirectory'] })
@@ -64,7 +64,7 @@ function launchMainWindow() {
 
     mainWindow.loadFile(path.join(__dirname, 'templates/index.html'));
     mainWindow.setTitle('COD Launcher - ' + pjson.version);
-    mainWindow.setMenu(null);
+    /*mainWindow.setMenu(null);*/
 }
 app.whenReady().then(() => {
     createWindow()
