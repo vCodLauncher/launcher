@@ -429,6 +429,7 @@ body {
     z-index: 3;
     cursor: pointer;
     width: 46px;
+    height: 40px;
 }
 
 .version i {

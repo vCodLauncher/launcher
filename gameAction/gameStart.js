@@ -28,9 +28,10 @@ function startLoading() {
 
 }
 
-let gameIsRunning = false;
+let gameIsRunning;
 let runningGame;
 document.querySelector('.button-play').addEventListener('click', async () => {
+    console.log(gameIsRunning)
     if (gameIsRunning) {
         runningGame.kill();
     } else {
