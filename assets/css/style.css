@@ -86,11 +86,12 @@ body {
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    transition: 0.4s ease-in-out;
 }
 
 .navbar-game:hover {
     background-color: #737373;
-    transition: 0.4s ease-in-out;
+
 }
 
 .navbar-game-active {
@@ -229,11 +230,12 @@ body {
     background-color: rgba(23, 22, 22, 0.95);
     border-radius: 5px;
     cursor: pointer;
+    transition: 0.5s ease-out;
 }
 
 .room-box:hover {
     background-color: rgba(22, 22, 22);
-    transition: 0.5s ease-out;
+
 }
 
 .room-title {
@@ -479,6 +481,7 @@ body {
     left: 307px;
     transition: height 0.5s ease, visibility 0.5s ease;
     overflow: hidden;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 

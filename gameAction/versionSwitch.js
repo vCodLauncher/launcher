@@ -3,19 +3,21 @@ document.addEventListener('DOMContentLoaded', function () {
     const dropdown = document.getElementById('version-dropdown');
 
     version.addEventListener('click', function (event) {
-        event.stopPropagation(); // Empêche la propagation de l'événement de clic du dropdown vers le document
+        if (!gameIsRunning) {
+            event.stopPropagation(); // Empêche la propagation de l'événement de clic du dropdown vers le document
 
-        dropdown.classList.toggle('dropdown-active');
+            dropdown.classList.toggle('dropdown-active');
 
-        if (dropdown.classList.contains('dropdown-active')) {
-            dropdown.style.height = (dropdown.scrollHeight - 10) + 'px';
-        } else {
-            dropdown.style.height = (dropdown.scrollHeight - 10) + 'px';
+            if (dropdown.classList.contains('dropdown-active')) {
+                dropdown.style.height = (dropdown.scrollHeight - 10) + 'px';
+            } else {
+                dropdown.style.height = (dropdown.scrollHeight - 10) + 'px';
 
-            // Utilisez setTimeout pour retarder le changement de hauteur
-            setTimeout(function () {
-                dropdown.style.height = '0px';
-            }, 10);
+                // Utilisez setTimeout pour retarder le changement de hauteur
+                setTimeout(function () {
+                    dropdown.style.height = '0px';
+                }, 10);
+            }
         }
     });
 

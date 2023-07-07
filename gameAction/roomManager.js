@@ -1,7 +1,7 @@
 function updateRoomCounts() {
     let roomTypes = ['team-deathmatch', 'search-and-destroy', 'deathmatch', 'gungame'];
 
-    roomTypes.forEach(roomType => {
+/*    roomTypes.forEach(roomType => {
         fetch(`http://193.38.250.89:3000/room/team-deathmatch`, {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -16,7 +16,7 @@ function updateRoomCounts() {
             .catch(error => {
                 console.error('Error:', error);
             });
-    });
+    });*/
 }
 
 setInterval(updateRoomCounts, 5000);

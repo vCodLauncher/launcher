@@ -39,21 +39,31 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-    const game1 = document.getElementById("game1");
-    const game2 = document.getElementById("game2");
-    const game3 = document.getElementById("game3");
 
-    game1.addEventListener("click", function() {
-        switchGame("cod1");
-    });
+        const game1 = document.getElementById("game1");
+        const game2 = document.getElementById("game2");
+        const game3 = document.getElementById("game3");
 
-    game2.addEventListener("click", function() {
-        switchGame("cod_united_offensive");
-    });
 
-    game3.addEventListener("click", function() {
-        switchGame("cod2");
-    });
+        game1.addEventListener("click", function() {
+            if (!gameIsRunning) {
+            switchGame("cod1");
+            }
+        });
+
+        game2.addEventListener("click", function() {
+            if (!gameIsRunning) {
+                switchGame("cod_united_offensive");
+            }
+        });
+
+        game3.addEventListener("click", function() {
+            if (!gameIsRunning) {
+
+                switchGame("cod2");
+            }
+        });
+
 
     const roomBoxes = document.querySelectorAll(".room-box");
     roomBoxes.forEach(function(roomBox) {
@@ -67,6 +77,7 @@ const game1 = document.getElementById('game1');
 const game2 = document.getElementById('game2');
 const game3 = document.getElementById('game3');
 function switchGame(game) {
+    if (!gameIsRunning) {
     const title = document.getElementById("title");
     const titleSettings = document.getElementById("settingsTitle");
     const versionList = document.getElementById("version-list");
@@ -231,7 +242,7 @@ function switchGame(game) {
             game.querySelector('.input-folder').value = data || 'No directory selected';
         }) ;
     });
-}
+}}
 
 function resetMenu() {
 
@@ -277,8 +288,15 @@ form.addEventListener('submit', function(event) {
         if (!value.startsWith('No')) {
             setSettings(game.id, value);
         }
-
+        modalitemCOD1.classList.remove('slide-in');
+        modalitemCOD1.classList.add('slide-out');
+        modal.style.opacity = '0';
+        setTimeout(function() {
+            modal.style.display = 'none';
+        }, 500); // Attendre 500 ms (0.5s) avant de masquer la modal
     });
+
+
 
 });
 

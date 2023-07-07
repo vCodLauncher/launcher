@@ -1,4 +1,4 @@
-const { exec } = require('child_process');
+const { spawn } = require('child_process');
 const { isWindows, isMac, isLinux } = require('../utils/checkOs');
 
 let startCmd = '';
@@ -28,44 +28,42 @@ function startLoading() {
 
 }
 
-let gameIsRunning;
+let gameIsRunning = false;
 let runningGame;
+
 document.querySelector('.button-play').addEventListener('click', async () => {
-    console.log(gameIsRunning)
+    console.log(gameIsRunning);
     if (gameIsRunning) {
         runningGame.kill();
     } else {
-        const curentVersion = document.getElementById('current-version').textContent;
-        let currentGamePath = await getSettings(gameName+'-'+curentVersion);
+        const currentVersion = document.getElementById('current-version').textContent;
+        const currentGamePath = await getSettings(gameName + '-' + currentVersion);
 
         if (!currentGamePath) {
-            displayNotification('Error : Game Not Found', "#ff0000");
+            displayNotification('Error: Game Not Found', '#ff0000');
             return;
         }
 
-        startLoading();
+        if (!gameIsRunning) {
+            startLoading();
+        }
 
-        runningGame = exec(startCmd + ' ', {cwd: currentGamePath}, (error, stdout, stderr) => {
-            if (error) {
-                console.error(`exec error: ${error}`);
-                return;
-            }
-            console.log(`stdout: ${stdout}`);
-            console.error(`stderr: ${stderr}`);
-            gameIsRunning = true;
-        });
+        runningGame = spawn(startCmd, [], { cwd: currentGamePath });
 
         runningGame.on('exit', () => {
-            const button = document.querySelector(".button-play");
+            const button = document.querySelector('.button-play');
             const icon = document.getElementById('play-icon');
-            button.childNodes[3].innerHTML = "Launch Game";
-            icon.src = "../assets/icon/button-play.png"
+            button.childNodes[3].innerHTML = 'Launch Game';
+            icon.src = '../assets/icon/button-play.png';
             gameIsRunning = false;
         });
+
+        runningGame.on('close', () => {
+            runningGame.kill();
+        });
+
+        gameIsRunning = true;
     }
-
-
 });
-
 
 
