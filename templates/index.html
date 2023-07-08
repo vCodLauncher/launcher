@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="../assets/css/style.css" xmlns="" xmlns="http://www.w3.org/1999/html">
+<link rel="stylesheet" href="../assets/css/modules/login.css"/>
 <link rel="stylesheet" href="../assets/css/icon.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -10,8 +11,6 @@
 <body>
 <div class="simplebar" style="height: 100vh;">
     <section class="main">
-
-
         <div class="content">
             <div class="navbar">
                 <div class="navbar-container-hub">
@@ -40,6 +39,40 @@
 
                 </div>
             </div>
+            <div class="login-button">
+                <p>
+                    login
+                </p>
+            </div>
+<!--            <div class="login-container">-->
+<!--                <div>-->
+<!--                    <img src="https://cdn2.unrealengine.com/Unreal+Engine%2Feg-logo-filled-1255x1272-0eb9d144a0f981d1cbaaa1eb957de7a3207b31bb.png" width="64" height="64">-->
+<!--                </div>-->
+
+<!--                <form method="post" class="login-form-container">-->
+<!--                    <p class="login-title">-->
+<!--                        SIGN IN-->
+<!--                    </p>-->
+<!--                    <div class="login-input-container">-->
+<!--                        <input class="login-input" placeholder="Pseudo">-->
+
+<!--                        <input class="login-input" placeholder="Password">-->
+<!--                    </div>-->
+<!--                    <div class="remember-container">-->
+<!--                        <input type="checkbox" id="remember-me" class="remember-checkbox">-->
+<!--                        <label for="remember-me" class="remember-label">Se souvenir de moi</label>-->
+<!--                    </div>-->
+
+<!--                    <input class="login-input-submit">-->
+<!--                </form>-->
+<!--            </div>-->
+            <style></style>
+            <script>
+                document.querySelector(".login-button").addEventListener("click", function() {
+                    document.querySelector(".login-container").style.display = "block";
+                });
+
+            </script>
             <div class="game-container">
                 <div id="notification" class="notification">Test</div>
                 <h1 class="game-title" id="title">
