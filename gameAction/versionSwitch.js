@@ -49,5 +49,5 @@ function changeActiveItem(clickedItem) {
     dropdown.classList.remove('dropdown-active');
     dropdown.style.height = '0px';
 
-
+    localStorage.setItem("currentVersion-"+gameName, clickedItem.innerHTML);
 }
