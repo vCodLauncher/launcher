@@ -1,16 +1,6 @@
 const { spawn } = require('child_process');
 const { isWindows, isMac, isLinux } = require('../utils/checkOs');
 
-let startCmd = '';
-
-if (isMac) {
-    startCmd = 'wine64 CoDMP.exe';
-} else if (isWindows) {
-    startCmd = 'CoDMP.exe';
-} else if (isLinux) {
-    startCmd = 'MESA_EXTENSION_MAX_YEAR=2004 wine CoDMP.exe';
-}
-
 
 function startLoading() {
 
@@ -30,9 +20,30 @@ function startLoading() {
 
 let gameIsRunning = false;
 let runningGame;
+let startCmd = '';
+let gameFile;
 
 document.querySelector('.button-play').addEventListener('click', async () => {
-    console.log(gameIsRunning);
+
+    const version = document.getElementById('version')
+    const versionArrow = document.getElementById('versionArrow');
+    const gameClassNavBar = document.getElementsByClassName('navbar-game');
+
+    if (gameName === 'cod1') {
+        gameFile = 'CoDMP.exe';
+    } else if (gameName === 'cod_united_offensive') {
+        gameFile = 'CoDUOMP.exe';
+    } else if (gameName === 'cod2') {
+        gameFile = 'CoD2MP.exe';
+    }
+
+    if (isMac) {
+        startCmd = 'wine64 ' + gameFile;
+    } else if (isWindows) {
+        startCmd = '' + gameFile;
+    } else if (isLinux) {
+        startCmd = 'MESA_EXTENSION_MAX_YEAR=2004 wine ' + gameFile;
+    }
     if (gameIsRunning) {
         runningGame.kill();
     } else {
@@ -55,12 +66,30 @@ document.querySelector('.button-play').addEventListener('click', async () => {
             const icon = document.getElementById('play-icon');
             button.childNodes[3].innerHTML = 'Launch Game';
             icon.src = '../assets/icon/button-play.png';
+            versionArrow.style.display = 'block';
             gameIsRunning = false;
+
+            gameClassNavBar.forEach(gameNavBar => {
+                    gameNavBar.classList.remove('not-allowed');
+                    gameNavBar.style.opacity = '1';
+            })
+            version.classList.remove('not-allowed');
         });
 
         runningGame.on('close', () => {
             runningGame.kill();
         });
+
+        versionArrow.style.display = 'none';
+
+        gameClassNavBar.forEach(gameNavBar => {
+            if (!gameNavBar.id.startsWith(gameName) && gameNavBar.id.startsWith('cod')) {
+                gameNavBar.classList.add('not-allowed');
+                gameNavBar.style.opacity = '0.6';
+            }
+        })
+
+        version.classList.add('not-allowed');
 
         gameIsRunning = true;
     }

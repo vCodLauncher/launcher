@@ -40,9 +40,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-        const game1 = document.getElementById("game1");
-        const game2 = document.getElementById("game2");
-        const game3 = document.getElementById("game3");
+        const game1 = document.getElementById("cod1nav");
+        const game2 = document.getElementById("coduonav");
+        const game3 = document.getElementById("cod2nav");
 
 
         game1.addEventListener("click", function() {
@@ -73,9 +73,9 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
-const game1 = document.getElementById('game1');
-const game2 = document.getElementById('game2');
-const game3 = document.getElementById('game3');
+const game1 = document.getElementById("cod1nav");
+const game2 = document.getElementById("coduonav");
+const game3 = document.getElementById("cod2nav");
 function switchGame(game) {
     if (!gameIsRunning) {
     const title = document.getElementById("title");
@@ -106,14 +106,26 @@ function switchGame(game) {
             setTimeout(function() {
                 title.innerHTML = "Call Of Duty: <br> Classic";
                 versionList.innerHTML = `
-            <li class="version-item item-active" onclick="changeActiveItem(this)">1.1</li>
+            <li class="version-item" onclick="changeActiveItem(this)">1.1</li>
             <li class="version-item" onclick="changeActiveItem(this)">1.1x</li>
             <li class="version-item" onclick="changeActiveItem(this)">1.2</li>
             <li class="version-item" onclick="changeActiveItem(this)">1.3</li>
             <li class="version-item" onclick="changeActiveItem(this)">1.4</li>
             <li class="version-item" onclick="changeActiveItem(this)">1.5</li>
         `;
-                currentVersion.innerHTML = "1.1x";
+
+
+                currentVersion.innerHTML =  localStorage.getItem("currentVersion-"+gameName) || '1.1';
+
+
+                let versionClassList = document.getElementsByClassName('version-item');
+
+                versionClassList.forEach(version => {
+                    if (version.innerHTML === currentVersion.innerHTML) {
+                        version.classList.add('item-active')
+                    }
+                })
+
                 container.style.opacity = 1;
                 container.style.transform = "translateY(0)";
 
@@ -169,10 +181,19 @@ function switchGame(game) {
             setTimeout(function() {
                 title.innerHTML = "Call Of Duty: <br> United Offensive";
                 versionList.innerHTML = `
-            <li class="version-item item-active" onclick="changeActiveItem(this)">1.41</li>
+            <li class="version-item" onclick="changeActiveItem(this)">1.41</li>
              <li class="version-item" onclick="changeActiveItem(this)">1.51</li>
         `;
-                currentVersion.innerHTML = "1.41";
+                currentVersion.innerHTML =  localStorage.getItem("currentVersion-"+gameName) || '1.41';
+
+                let versionClassList = document.getElementsByClassName('version-item');
+
+                versionClassList.forEach(version => {
+                    if (version.innerHTML === currentVersion.innerHTML) {
+                        version.classList.add('item-active')
+                    }
+                })
+
                 container.style.opacity = 1;
                 container.style.transform = "translateY(0)";
             }, 500);
@@ -204,11 +225,20 @@ function switchGame(game) {
             setTimeout(function() {
                 title.innerHTML = "Call Of Duty: 2 <br> Classic";
                 versionList.innerHTML = `
-            <li class="version-item item-active" onclick="changeActiveItem(this)">1.0</li>
+            <li class="version-item" onclick="changeActiveItem(this)">1.0</li>
              <li class="version-item" onclick="changeActiveItem(this)">1.2</li>
              <li class="version-item" onclick="changeActiveItem(this)">1.3</li>
         `;
-                currentVersion.innerHTML = "1.0";
+                currentVersion.innerHTML =  localStorage.getItem("currentVersion-"+gameName) || '1.0';
+
+                let versionClassList = document.getElementsByClassName('version-item');
+
+                versionClassList.forEach(version => {
+                    if (version.innerHTML === currentVersion.innerHTML) {
+                        version.classList.add('item-active')
+                    }
+                })
+
                 container.style.opacity = 1;
                 container.style.transform = "translateY(0)";
             }, 500);
@@ -277,7 +307,6 @@ closeButton.addEventListener('click', function() {
             modal.style.display = 'none';
         }, 500); // Attendre 500 ms (0.5s) avant de masquer la modal
 });
-
 
 const form = document.getElementById('saveSettings');
 form.addEventListener('submit', function(event) {

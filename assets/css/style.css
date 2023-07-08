@@ -547,6 +547,7 @@ margin-top: -5px;
 .user-bar-container {
     width: 14vw;
 }
-/*
-test test test test test
- */
+
+.not-allowed {
+    cursor: not-allowed;
+}

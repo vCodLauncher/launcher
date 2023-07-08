@@ -23,13 +23,13 @@
                     </div>
                 </div>
                 <div class="navbar-container-game">
-                    <div class="navbar-game" id="game1" onclick="switchGame('cod1', this)">
+                    <div class="navbar-game" id="cod1nav" onclick="switchGame('cod1', this)">
                         <img src="../assets/game_logo/cod_1_logo.png" width="42" height="42">
                     </div>
-                    <div class="navbar-game" id="game2" onclick="switchGame('cod_united_offensive', this)">
+                    <div class="navbar-game" id="coduonav" onclick="switchGame('cod_united_offensive', this)">
                         <img src="../assets/game_logo/cod_uo_logo.png" width="42" height="42">
                     </div>
-                    <div class="navbar-game" id="game3" onclick="switchGame('cod2', this)">
+                    <div class="navbar-game" id="cod2nav" onclick="switchGame('cod2', this)">
                         <img src="../assets/game_logo/cod_2_logo.png" width="42" height="42">
                     </div>
                     <div class="navbar-game" id="game4">
@@ -58,7 +58,7 @@
                     </div>
                 </div>
                 <div id="version" class="version">
-                    <p id="current-version">1.1x</p><i class="arrow down"></i>
+                    <p id="current-version">1.1x</p><i id="versionArrow" class="arrow down"></i>
                 </div>
                 <div id="version-dropdown" class="version-dropdown">
                     <ul id="version-list" class="version-list">
@@ -141,6 +141,7 @@
     <script src="../gameAction/gameSettings.js"></script>
     <script src="../gameAction/gameStart.js"></script>
     <script src="../assets/js/index.js"></script>
+
     <script src="../gameAction/roomManager.js"></script>
 
 
