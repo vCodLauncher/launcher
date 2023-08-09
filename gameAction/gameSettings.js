@@ -100,7 +100,7 @@ function openBrowseDialog(element) {
 
     ipcRenderer.on('selected-folder', (event, folderPath) => {
         if (!folderPath || folderPath === '') {
-            element.getElementsByClassName("input-folder")[0].value = 'Aucun dossier sélectionné';
+            element.getElementsByClassName("input-folder")[0].value = 'No directory selected';
         }else {
             element.getElementsByClassName("input-folder")[0].value = folderPath;
         }
