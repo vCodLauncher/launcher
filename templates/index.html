@@ -7,77 +7,39 @@
       rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/simplebar@5.3.0/dist/simplebar.min.css">
 <script src="https://unpkg.com/simplebar@5.3.0/dist/simplebar.min.js"></script>
+
 <meta charset="UTF-8">
 <body>
 <div class="simplebar" style="height: 100vh;">
     <section class="main">
-        <div class="content">
-            <div class="navbar">
-                <div class="navbar-container-hub">
-                    <div class="navbar-game">
-                        <img src="../assets/icon/maison.png" width="28" height="28"/>
+        <div class="main_content">
+            <div class="content" id="home_content" style="display: none;">
+            
+                <div class="navbar">
+                    <div class="navbar-container-game">
+                        <div class="navbar-game" id="cod1nav" onclick="switchGame('cod1')">
+                            <img src="../assets/game_logo/cod_1_logo.png" width="42" height="42">
+                        </div>
+                        <div class="navbar-game" id="coduonav" onclick="switchGame('cod_united_offensive')">
+                            <img src="../assets/game_logo/cod_uo_logo.png" width="42" height="42">
+                        </div>
+                        <div class="navbar-game" id="cod2nav" onclick="switchGame('cod2')">
+                            <img src="../assets/game_logo/cod_2_logo.png" width="42" height="42">
+                        </div>
+                        <div class="navbar-game" id="game4">
+    
+                        </div>
                     </div>
-                    <div class="navbar-game">
-                        <img src="../assets/icon/carte-de-shopping.png" width="28" height="28"/>
-                    </div>
-                </div>
-                <div class="navbar-container-game">
-                    <div class="navbar-game" id="cod1nav" onclick="switchGame('cod1')">
-                        <img src="../assets/game_logo/cod_1_logo.png" width="42" height="42">
-                    </div>
-                    <div class="navbar-game" id="coduonav" onclick="switchGame('cod_united_offensive')">
-                        <img src="../assets/game_logo/cod_uo_logo.png" width="42" height="42">
-                    </div>
-                    <div class="navbar-game" id="cod2nav" onclick="switchGame('cod2')">
-                        <img src="../assets/game_logo/cod_2_logo.png" width="42" height="42">
-                    </div>
-                    <div class="navbar-game" id="game4">
-
+                    <div class="navbar-not-show">
+    
                     </div>
                 </div>
-                <div class="navbar-not-show">
-
-                </div>
-            </div>
-            <div class="login-button">
-                <p>
-                    
-                </p>
-            </div>
-           <!-- <div class="login-container">
-               <div>
-                   <img src="https://cdn2.unrealengine.com/Unreal+Engine%2Feg-logo-filled-1255x1272-0eb9d144a0f981d1cbaaa1eb957de7a3207b31bb.png" width="64" height="64">
-               </div>
-               <form method="post" class="login-form-container">
-                   <p class="login-title">
-                       SIGN IN
-                   </p>
-                   <div class="login-input-container">
-                       <input class="login-input" placeholder="Pseudo">
-
-                       <input class="login-input" placeholder="Password">
-                   </div>
-                   <div class="remember-container">
-                       <input type="checkbox" id="remember-me" class="remember-checkbox">
-                       <label for="remember-me" class="remember-label">Se souvenir de moi</label>
-                   </div>
-
-                   <input class="login-input-submit">
-               </form>
-           </div> -->
-            <style></style>
-            <script>
-                document.querySelector(".login-button").addEventListener("click", function() {
-                    document.querySelector(".login-container").style.display = "block";
-                });
-
-            </script>
-            <div class="game-container">
-                <div id="notification" class="notification">Test</div>
-                <h1 class="game-title" id="title">
-                    Call Of Duty: <br/>
-                    Classic
-                </h1>
+                <div class="game-container">
+                    <div id="notification" class="notification">Test</div>
+                    <h1 class="game-title" id="title">
+                        Call Of Duty: <br/>
+                        Classic
+                    </h1>
                 <div class="container-button">
                     <div class="button-play" onclick="">
                         <img class="play-icon" id="play-icon" src="../assets/icon/button-play.png" width="32"
@@ -88,17 +50,19 @@
                     <div class="button-settings">
                         <img class="play-icon" src="../assets/icon/reglages.png" width="32" height="32">
                     </div>
+                    <div id="version" class="version">
+                        <p id="current-version">1.1x</p><i id="versionArrow" class="arrow down"></i>
+                    </div>
+                    <div id="version-dropdown" class="version-dropdown">
+                        <ul id="version-list" class="version-list">
+        
+                        </ul>
+                    </div>
+                    
                 </div>
-                <div id="version" class="version">
-                    <p id="current-version">1.1x</p><i id="versionArrow" class="arrow down"></i>
-                </div>
-                <div id="version-dropdown" class="version-dropdown">
-                    <ul id="version-list" class="version-list">
-
-                    </ul>
-                </div>
-
-
+                
+    
+    
                 <div class="room-container">
                     <h1 class="room-container-title">
                         Join a room
@@ -138,13 +102,84 @@
                         </div>
                     </div>
                 </div>
+                </div>
+    
+    
+                <div class="login-button">
+                    <p>
+                        
+                    </p>
+                </div>
+               <!-- <div class="login-container">
+                   <div>
+                       <img src="https://cdn2.unrealengine.com/Unreal+Engine%2Feg-logo-filled-1255x1272-0eb9d144a0f981d1cbaaa1eb957de7a3207b31bb.png" width="64" height="64">
+                   </div>
+                   <form method="post" class="login-form-container">
+                       <p class="login-title">
+                           SIGN IN
+                       </p>
+                       <div class="login-input-container">
+                           <input class="login-input" placeholder="Pseudo">
+    
+                           <input class="login-input" placeholder="Password">
+                       </div>
+                       <div class="remember-container">
+                           <input type="checkbox" id="remember-me" class="remember-checkbox">
+                           <label for="remember-me" class="remember-label">Se souvenir de moi</label>
+                       </div>
+    
+                       <input class="login-input-submit">
+                   </form>
+               </div> -->
+                <style></style>
+                <script>
+                    document.querySelector(".login-button").addEventListener("click", function() {
+                        document.querySelector(".login-container").style.display = "block";
+                    });
+    
+                </script>
+                
+                <div class="user-bar-container">
+    
+                </div>
             </div>
-            <div class="user-bar-container">
+            <div  id="shop_content" class="content" style="display: none;">
+                <div class="navbar">
+                    <div class="navbar-container-game">
+                        <div class="navbar-game">
+                            1
+                        </div>
+                        <div class="navbar-game">
+                            2
+                        </div>
+                        <div class="navbar-game">
+                            3
+                        </div>
+                    </div>
+                    <div class="navbar-not-show">
+    
+                    </div>
+                </div>
+                <div class="game-container">
+                    <div id="notification" class="notification">Test</div>
+                    <h1 class="game-title">
+                        Call Of Duty: <br/>
+                        Classic
+                    </h1>
+                </div>
+            </div>
 
-            </div>
         </div>
+        
         <div class="footer">
-
+            <div class="navbar-container-hub">
+                <div class="navbar-game" onclick="switchMenu('home')" id="home_nav">
+                    <img src="../assets/icon/maison.png" width="28" height="28"/>
+                </div>
+                <div class="navbar-game" onclick="switchMenu('shop')" id="shop_nav">
+                    <img src="../assets/icon/carte-de-shopping.png" width="28" height="28"/>
+                </div>
+            </div>
         </div>
     </section>
     <div class="modal-container" id="modalCOD1">

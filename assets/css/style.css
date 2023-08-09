@@ -20,6 +20,7 @@ body {
     height: 100vh;
 }
 
+
 .content {
     background-color: #000;
     background-image: url("../game_background/cod1.png");
@@ -34,9 +35,14 @@ body {
 }
 
 .navbar {
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 50%, black 100%);
+    z-index: 10;
+    position: absolute;
+    /* top:1px; */
+    /* left: 0; */
+    /* background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 50%, black 100%); */
+    background-color: #0000007c;
     width: 6vw;
-    height: 100%;
+    height: 90vh;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -45,15 +51,16 @@ body {
 
 .navbar-container-hub {
     background-color: #111010;
-    width: 80%;
-    height: 25%;
+    width: fit-content;
+    height: fit-content;
+    padding: .5rem 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    gap: 1.5rem;
+    flex-direction: row;
+    gap: 1rem;
     border-radius: 30px;
-    margin-top: 3rem;
+    /* margin-top: 3rem; */
 }
 
 .navbar-not-show {
@@ -66,20 +73,23 @@ body {
 }
 
 .navbar-container-game {
+    position: relative;
+    /* top:33%; */
     background-color: #111010;
     width: 80%;
-    height: 45%;
+    height: fit-content;
+    padding: 1.5rem 0;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1rem;
     border-radius: 30px;
     margin-top: 3rem;
 }
 
 .navbar-game {
-    background-color: #383636;
+    background-color: #363636;
     width: 3rem;
     height: 3rem;
     border-radius: 15px;
@@ -87,27 +97,35 @@ body {
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    transition: 0.1s ease-in-out;
 }
 
 .navbar-game:hover {
-    background-color: #737373;
+    background-size: cover;
+    background-position: 50%;
+    background-color: #151515;
+    box-shadow: inset 0px 0px 277px 3px #00000092;
 
 }
 
 .navbar-game-active {
-    background-color: #dde8e8;
-    transition: 0.1s ease-in-out;
+    background-color: #000;
+    transition: 0.0s ease-in-out;
 }
 
 .footer {
+    position: static;
+    top: 100vh;
     width: 100vw;
-    height: 12vh;
+    height: fit-content;
     background-color: black;
+    color: white;
+    padding: 1rem;
 }
 
 .game-container {
-    padding-left: 5rem;
+    position: static;
+    top: 0;
+    padding-left: 7rem;
     display: flex;
     justify-content: start;
     /*align-items: start;*/
@@ -449,7 +467,7 @@ body {
     padding: 0px 9px;
     border-radius: 30px;
     top: 304px;
-    left: 307px;
+    left: 347px;
     z-index: 3;
     cursor: pointer;
     width: 46px;
@@ -483,7 +501,7 @@ body {
     z-index: 2;
     font-family: Poppins, sans-serif;
     top: 322px;
-    left: 307px;
+    left: 347px;
     transition: height 0.5s ease, visibility 0.5s ease;
     overflow: hidden;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);

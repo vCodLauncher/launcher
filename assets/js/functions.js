@@ -1,39 +1,38 @@
 
-const title = document.getElementById("title");
-const titleSettings = document.getElementById("settingsTitle");
-const versionList = document.getElementById("version-list");
-const currentVersion = document.getElementById("current-version");
-const content = document.querySelector(".content");
-const gameContainer = document.querySelector(".game-container");
-const settingsContainer = document.querySelector(".modal-content");
-const container = document.querySelector('.game-container');
+
 
 
 function PlaySound (path,volume) {
     if (!volume)
         volume=0.2;
+    
     var audio = new Audio(path);
     audio.loop = false;
     audio.volume=volume;
     audio.play(); 
 }
 function updateGameSettings(game, gameTitle, background, versions) {
-    var _versions = [];
+    var title = document.querySelector("#"+optionName+"_content #title");
+    var titleSettings = document.querySelector("#settingsTitle");
+    var versionList = document.querySelector("#"+optionName+"_content #version-list");
+    var currentVersion = document.querySelector("#"+optionName+"_content #current-version");
+    var content = document.querySelector("#"+optionName+"_content");
+    var gameContainer = document.querySelector("#"+optionName+"_content .game-container");
+
     
-
-    versions.forEach(version => {
-        _versions.push({ version: version, id: `${gameName}-${version.toLowerCase()}` })
-    });
-    updateSettingsContainer(_versions);
-
+    console.log("im updating game settings")
     gameContainer.style.opacity = 0;
     gameContainer.style.transform = "translateY(20px)";
-
     titleSettings.innerHTML = gameTitle + " — Settings";
     content.style.backgroundImage = background;
 
     resetMenu();
 
+    var _versions = [];
+    versions.forEach(version => {
+        _versions.push({ version: version, id: `${gameName}-${version.toLowerCase()}` })
+    });
+    updateSettingsContainer(_versions);
     
     const versionListHTML = versions.map(version => `
         <li class="version-item" onclick="changeActiveItem(this)">${version}</li>
@@ -69,9 +68,45 @@ function updateGameSettings(game, gameTitle, background, versions) {
 
 }
 
+
+
+function updateMenuOptionsSettings(title, background) {
+     var viewTitle = document.querySelector("#"+optionName+"_content .game-title");
+     console.log(viewTitle)
+    var titleSettings = document.querySelector("#settingsTitle");
+    var versionList = document.querySelector("#"+optionName+"_content #version-list");
+    var currentVersion = document.querySelector("#"+optionName+"_content #current-version");
+    var content = document.querySelector("#"+optionName+"_content");
+    var gameContainer = document.querySelector("#"+optionName+"_content .game-container");
+
+    
+
+    // resetMenu();
+    
+    gameContainer.style.opacity = 0;
+    gameContainer.style.transform = "translateY(20px)";
+    content.style.backgroundImage = background;
+    
+
+    
+    setTimeout(function () {
+        gameContainer.style.opacity = 1;
+        gameContainer.style.transform = "translateY(00px)";
+        viewTitle.innerHTML = title;
+
+       
+        isSwitching=false;
+
+    }, 300);
+
+  
+
+
+}
+
 function updateSettingsContainer(locations) {
     let settingsHTML = '';
-
+    var settingsContainer = document.querySelector(".modal-content");
     locations.forEach(location => {
         settingsHTML += `
             <p class="setting-name">Game Location ${location.version} :</p>

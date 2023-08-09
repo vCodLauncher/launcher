@@ -1,8 +1,10 @@
 const game1 = document.getElementById("cod1nav");
 const game2 = document.getElementById("coduonav");
 const game3 = document.getElementById("cod2nav");
-var gameName = null;
+var gameName = "cod1";
+var optionName = "home";
 var isSwitching = false;
+var isSwitchingMenu = false;
 
 
 
@@ -51,9 +53,9 @@ document.addEventListener("DOMContentLoaded", function() {
     */
 
     
+    switchMenu(optionName,true)
     // We force to switch the Game. Initially it will be cod1 as defined in the beginning
     switchGame(gameName,true)
-
 
     const roomBoxes = document.querySelectorAll(".room-box");
     roomBoxes.forEach(function(roomBox) {
@@ -67,13 +69,16 @@ document.addEventListener("DOMContentLoaded", function() {
 
 function switchGame(game, firstTime) {
     if (isSwitching){
+        console.log("isSwitching")
         return;
     }
     if (!game){
+        console.log("not game")
         game = "cod1"
     }
 
-    if (game && gameName == game){
+    if (!firstTime && game && gameName == game){
+        console.log("game is equal")
         return;
     }
 
@@ -88,6 +93,8 @@ function switchGame(game, firstTime) {
                 PlaySound("../assets/sounds/swap.mp3",0.15)
             },100);
         }
+
+        console.log("switching to ",gameName)
         switch (gameName) {
             case "cod1":
                 updateGameSettings(
@@ -131,6 +138,73 @@ function switchGame(game, firstTime) {
         });
     }
 }
+
+function switchMenu(option, firstTime) {
+    console.log("init")
+
+    if (option == null){
+        console.log("optionName is",optionName)
+    }
+    if (isSwitchingMenu){
+        console.log("switching menu")
+        return;
+    }
+    if (!option){
+        console.log("option not defined")
+        option = "home"
+    }
+
+    if (!firstTime && option && optionName == option){
+        console.log("option equals",option)
+        return;
+    }
+
+    if (!gameIsRunning) {
+        isSwitchingMenu = true;
+        // if optionName exist, remove selected class
+        if(optionName){
+            console.log("there was already a option selected")
+
+            document.getElementById(optionName+"_nav").classList.remove('navbar-game-active');
+            document.getElementById(optionName+"_content").style.display="none";
+        }
+        optionName = option;
+        localStorage.setItem('optionName', optionName);
+        const nav =  document.getElementById(optionName+"_nav")
+        const content =  document.getElementById(optionName+"_content")
+        nav.classList.remove('navbar-game-active');
+
+        // if not the initial swap, then play the audio
+        if (!firstTime){
+            setTimeout(function () {
+                PlaySound("../assets/sounds/swap.mp3",0.15)
+            },100);
+        }
+        switch (optionName) {
+            case "home":
+                console.log("trying to go home")
+                switchGame(gameName,true)
+
+                break;
+            case "shop":
+                console.log("shop")
+                updateMenuOptionsSettings(
+                    "Shop",
+                    'url("../assets/game_background/cod_2_background.webp")'
+                );
+                break;
+        }
+
+        console.log()
+        content.style.display="block";
+
+        isSwitchingMenu = false;
+        
+       nav.classList.add('navbar-game-active');
+
+    }
+}
+
 
 function resetMenu() {
     game1.classList.remove('navbar-game-active')
