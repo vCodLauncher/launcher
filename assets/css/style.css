@@ -5,7 +5,7 @@
     user-select: none;
 }
 input, button, textarea, :focus {
-    outline: none; // You should add some other style for :focus to help UX/a11y
+    outline: none;  /* You should add some other style for :focus to help UX/a11y */
 }
 html,
 body {
@@ -21,7 +21,8 @@ body {
 }
 
 .content {
-    background-image: url("../game_background/test.jpg");
+    background-color: #000;
+    background-image: url("../game_background/cod1.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -86,7 +87,7 @@ body {
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    transition: 0.4s ease-in-out;
+    transition: 0.1s ease-in-out;
 }
 
 .navbar-game:hover {
@@ -96,7 +97,7 @@ body {
 
 .navbar-game-active {
     background-color: #dde8e8;
-    transition: 0.4s ease-in-out;
+    transition: 0.1s ease-in-out;
 }
 
 .footer {
@@ -150,6 +151,10 @@ body {
     overflow: hidden;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
+.button-play:hover {
+    background-color: #ffffff;
+    
+}
 
 .button-play > p {
     margin-left: 1.2rem;
@@ -198,7 +203,6 @@ body {
     -o-transform: rotate(90deg);
     -ms-transform: rotate(90deg);
     transform: rotate(90deg);
-
 }
 
 .room-container {
@@ -210,13 +214,13 @@ body {
     gap: 1rem;
 }
 
-.room-container-title {
+.room-container h1{
     font-family: Poppins, sans-serif;
     color: white;
     text-transform: uppercase;
     font-size: 25px;
+    margin: 20px 0px 10px 0;
 }
-
 .room-saloon-container {
     display: flex;
     align-items: flex-start;
@@ -227,14 +231,15 @@ body {
 .room-box {
     width: 15rem;
     height: 7.5rem;
-    background-color: rgba(23, 22, 22, 0.95);
+    background-color: rgba(23, 22, 22, 0.8);
     border-radius: 5px;
     cursor: pointer;
-    transition: 0.5s ease-out;
+    transition: 0.2s ease-out;
 }
 
 .room-box:hover {
     background-color: rgba(22, 22, 22);
+    transform: scale(1.02);
 
 }
 
@@ -506,7 +511,7 @@ body {
     padding: 8px 6px;
     border-radius: 30px;
     opacity: 0;
-    transition: opacity 0.5s ease, background-color 0.5s ease, color 0.5s ease;
+    transition: opacity 0.1s ease, background-color 0.1s ease, color 0.1s ease;
     transition-delay: 0.3s;
     font-size: 12px;
     font-weight: bold;

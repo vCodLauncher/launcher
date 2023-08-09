@@ -63,7 +63,7 @@ function launchMainWindow() {
     });
 
     mainWindow.loadFile(path.join(__dirname, 'templates/index.html'));
-    mainWindow.setTitle('COD Launcher - ' + pjson.version);
+    mainWindow.setTitle('CODLite Launcher - v' + pjson.version);
     /*mainWindow.setMenu(null);*/
 }
 app.whenReady().then(() => {

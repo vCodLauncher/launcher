@@ -22,13 +22,13 @@
                     </div>
                 </div>
                 <div class="navbar-container-game">
-                    <div class="navbar-game" id="cod1nav" onclick="switchGame('cod1', this)">
+                    <div class="navbar-game" id="cod1nav" onclick="switchGame('cod1')">
                         <img src="../assets/game_logo/cod_1_logo.png" width="42" height="42">
                     </div>
-                    <div class="navbar-game" id="coduonav" onclick="switchGame('cod_united_offensive', this)">
+                    <div class="navbar-game" id="coduonav" onclick="switchGame('cod_united_offensive')">
                         <img src="../assets/game_logo/cod_uo_logo.png" width="42" height="42">
                     </div>
-                    <div class="navbar-game" id="cod2nav" onclick="switchGame('cod2', this)">
+                    <div class="navbar-game" id="cod2nav" onclick="switchGame('cod2')">
                         <img src="../assets/game_logo/cod_2_logo.png" width="42" height="42">
                     </div>
                     <div class="navbar-game" id="game4">
@@ -41,31 +41,30 @@
             </div>
             <div class="login-button">
                 <p>
-                    login
+                    
                 </p>
             </div>
-<!--            <div class="login-container">-->
-<!--                <div>-->
-<!--                    <img src="https://cdn2.unrealengine.com/Unreal+Engine%2Feg-logo-filled-1255x1272-0eb9d144a0f981d1cbaaa1eb957de7a3207b31bb.png" width="64" height="64">-->
-<!--                </div>-->
+           <!-- <div class="login-container">
+               <div>
+                   <img src="https://cdn2.unrealengine.com/Unreal+Engine%2Feg-logo-filled-1255x1272-0eb9d144a0f981d1cbaaa1eb957de7a3207b31bb.png" width="64" height="64">
+               </div>
+               <form method="post" class="login-form-container">
+                   <p class="login-title">
+                       SIGN IN
+                   </p>
+                   <div class="login-input-container">
+                       <input class="login-input" placeholder="Pseudo">
 
-<!--                <form method="post" class="login-form-container">-->
-<!--                    <p class="login-title">-->
-<!--                        SIGN IN-->
-<!--                    </p>-->
-<!--                    <div class="login-input-container">-->
-<!--                        <input class="login-input" placeholder="Pseudo">-->
+                       <input class="login-input" placeholder="Password">
+                   </div>
+                   <div class="remember-container">
+                       <input type="checkbox" id="remember-me" class="remember-checkbox">
+                       <label for="remember-me" class="remember-label">Se souvenir de moi</label>
+                   </div>
 
-<!--                        <input class="login-input" placeholder="Password">-->
-<!--                    </div>-->
-<!--                    <div class="remember-container">-->
-<!--                        <input type="checkbox" id="remember-me" class="remember-checkbox">-->
-<!--                        <label for="remember-me" class="remember-label">Se souvenir de moi</label>-->
-<!--                    </div>-->
-
-<!--                    <input class="login-input-submit">-->
-<!--                </form>-->
-<!--            </div>-->
+                   <input class="login-input-submit">
+               </form>
+           </div> -->
             <style></style>
             <script>
                 document.querySelector(".login-button").addEventListener("click", function() {
@@ -174,9 +173,7 @@
     <script src="../gameAction/gameSettings.js"></script>
     <script src="../gameAction/gameStart.js"></script>
     <script src="../assets/js/index.js"></script>
-
-    <script src="../gameAction/roomManager.js"></script>
-
+    <script src="../assets/js/functions.js"></script>
 
     <script src="../gameAction/roomManager.js"></script>
     <script src="../gameAction/versionSwitch.js"></script>
