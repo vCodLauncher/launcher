@@ -1,6 +1,7 @@
 const { spawn } = require('child_process');
 const { isWindows, isMac, isLinux } = require('../utils/checkOs');
-
+const gameClassNavBar = document.getElementsByClassName('navbar-game');
+var GameLaunchedCorrectly = true;
 
 function startLoading() {
 
@@ -9,6 +10,9 @@ function startLoading() {
     button.childNodes[3].innerHTML = "Loading...";
 
     setTimeout(() => {
+        if (!GameLaunchedCorrectly){
+            return;
+        }
         const button = document.querySelector(".button-play");
         button.classList.remove('loading')
         const icon = document.getElementById('play-icon');
@@ -23,11 +27,28 @@ let runningGame;
 let startCmd = '';
 let gameFile;
 
+
+function gameClosed(){
+        const button = document.querySelector('.button-play');
+        const icon = document.getElementById('play-icon');
+        button.childNodes[3].innerHTML = 'Launch Game';
+        icon.src = '../assets/icon/button-play.png';
+        versionArrow.style.display = 'block';
+        gameIsRunning = false;
+        button.classList.remove("loading");
+
+
+        gameClassNavBar.forEach(gameNavBar => {
+                gameNavBar.classList.remove('not-allowed');
+                gameNavBar.style.opacity = '1';
+        })
+        version.classList.remove('not-allowed');
+}
+
 document.querySelector('.button-play').addEventListener('click', async () => {
 
     const version = document.getElementById('version')
     const versionArrow = document.getElementById('versionArrow');
-    const gameClassNavBar = document.getElementsByClassName('navbar-game');
 
     if (gameName === 'cod1') {
         gameFile = 'CoDMP.exe';
@@ -40,7 +61,7 @@ document.querySelector('.button-play').addEventListener('click', async () => {
     if (isMac) {
         startCmd = 'wine64 ' + gameFile;
     } else if (isWindows) {
-        startCmd = '' + gameFile;
+        startCmd = gameFile;
     } else if (isLinux) {
         startCmd = 'MESA_EXTENSION_MAX_YEAR=2004 wine ' + gameFile;
     }
@@ -51,30 +72,53 @@ document.querySelector('.button-play').addEventListener('click', async () => {
         const currentGamePath = await getSettings(gameName + '-' + currentVersion);
 
         if (!currentGamePath) {
-            displayNotification('Error: Game Not Found', '#ff0000');
+            displayNotification('Error: Game Not Found', '#f44336');
             return;
         }
+
 
         if (!gameIsRunning) {
             startLoading();
         }
 
+        // Execute the command
+        const childProcess = spawn(gameFile, [
+            `+connect`,
+            `cod.swd.cl:20010`,
+            `+set`,
+            `fs_game`,
+            `callofdutychile`,
+            `+set`,
+            `password`,
+            `ladder`,
+  
+          ], { cwd: currentGamePath });
+        
+        childProcess.stdout.on('data', (data) => {
+          console.log(`stdout: ${data}`);
+        });
+        
+        childProcess.stderr.on('data', (data) => {
+          console.error(`stderr: ${data}`);
+        });
+        
+        childProcess.on('error', (error) => {
+          gameClosed();
+          console.error(`Error: ${error.message}`);
+          GameLaunchedCorrectly = false;
+        });
+        
+        childProcess.on('close', (code) => {
+          gameClosed();
+          GameLaunchedCorrectly = false;
+          console.log(`Child process exited with code ${code}`);
+        });
+
+        // spawn('"C:/Program Files (x86)/Steam/steamapps/common/Call of Duty/CoDMP.exe" +connect cod.swd.cl:20010',[],{cwd:currentGamePath})
+        // return;
         runningGame = spawn(startCmd, [], { cwd: currentGamePath });
 
-        runningGame.on('exit', () => {
-            const button = document.querySelector('.button-play');
-            const icon = document.getElementById('play-icon');
-            button.childNodes[3].innerHTML = 'Launch Game';
-            icon.src = '../assets/icon/button-play.png';
-            versionArrow.style.display = 'block';
-            gameIsRunning = false;
-
-            gameClassNavBar.forEach(gameNavBar => {
-                    gameNavBar.classList.remove('not-allowed');
-                    gameNavBar.style.opacity = '1';
-            })
-            version.classList.remove('not-allowed');
-        });
+       
 
         runningGame.on('close', () => {
             runningGame.kill();
@@ -94,5 +138,4 @@ document.querySelector('.button-play').addEventListener('click', async () => {
         gameIsRunning = true;
     }
 });
-
 

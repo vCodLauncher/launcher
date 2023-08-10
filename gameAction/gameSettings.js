@@ -96,7 +96,7 @@ function getSettings(paramName) {
 
 function openBrowseDialog(element) {
     ipcRenderer.removeAllListeners('selected-folder');
-        ipcRenderer.send('open-folder-dialog');
+    ipcRenderer.send('open-folder-dialog');
 
     ipcRenderer.on('selected-folder', (event, folderPath) => {
         if (!folderPath || folderPath === '') {

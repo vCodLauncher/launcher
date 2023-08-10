@@ -29,15 +29,53 @@ input, button, textarea, :focus {
 
 .room-name {
     color : white;
+    line-height: 32px;
+    justify-content: center;
+    margin-right:5px;
 }
 
 .room-status {
     color : white;
 }
+.vertical-center{
+    display: flex;
+    align-items: center;
+
+}
+
+.room-exit-button{
+    position: fixed;
+    cursor:pointer;
+    height: fit-content;
+    width: fit-content;
+    top:10px;
+    left:10px;
+    background-color: white;
+    padding: .3rem;
+
+    border-radius: 50%;
+    transition: all .2s;
+}
+
+#copy-link{
+    transition: all .2s;
+    cursor: pointer;
+}
+#copy-link:hover{
+    transform: scale(1.3);
+}
+
+.room-exit-button:hover{
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg) scale(1.1);
+}
 
 .game-column {
     width: 30vw;
-    height: 100vh;
+    /* height: 100vh; */
     display: flex;
     flex-direction: column;
     gap: 10rem;

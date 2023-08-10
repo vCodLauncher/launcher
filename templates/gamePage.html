@@ -3,14 +3,22 @@
       rel="stylesheet">
 
 <section class="container">
+    <div class="room-exit-button" id="quit-btn">
+        <div class="button-settings">
+            <img class="play-icon" src="../assets/icon/x.png" width="32" height="32">
+        </div>
+    </div>
     <div class="game-column">
         <div>
             <h1 id="room-type" class="title"></h1>
-            <h4>
-                <span id="room-id" class="room-name">Lobby-61718.codlauncher.net</span>
+            <h4 class="vertical-center">
+                <span id="room-id" class="room-name">http://codlite.net/lobby/61718</span> <img id="copy-link" src="../assets/icon/copy.png" height="32px" width="32px">
             </h4>
             <h4>
-                <span id="room-server-status" class="room-status">Server : <span style="color : green">ON</span></span>
+                <span id="room-server-status" class="room-status">Status: <span style="color : green">Online</span></span>
+            </h4>
+            <h4>
+                <span id="room-server-status" class="room-status">Ping: <span style="color : green">12ms</span></span>
             </h4>
             <div id="quit-btn" class="leave-button">Leave room</div>
         </div>

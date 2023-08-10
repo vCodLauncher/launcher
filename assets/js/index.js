@@ -3,8 +3,10 @@ const game2 = document.getElementById("coduonav");
 const game3 = document.getElementById("cod2nav");
 var gameName = "cod1";
 var optionName = "home";
+var CurrentVersion = null;
 var isSwitching = false;
 var isSwitchingMenu = false;
+var showingNotification = false;
 
 
 
@@ -61,7 +63,8 @@ document.addEventListener("DOMContentLoaded", function() {
     roomBoxes.forEach(function(roomBox) {
         roomBox.addEventListener("click", function() {
             const roomType = this.getAttribute("data-room");
-            window.location.href = "gamePage.html?roomType=" + roomType;
+            console.log(roomType)
+            window.location.href = "gamePage.html?roomType=" + roomType + "&game="+gameName+"&version="+CurrentVersion;
         });
     });
 });
@@ -275,11 +278,23 @@ form.addEventListener('submit', function(event) {
 });
 
 function displayNotification(message, color) {
+    console.log("Displaying notification")
+
+    
+
+    if (showingNotification){
+        console.log("already showing notif")
+        return;
+    }
+    showingNotification = true;
+
     const notification = document.getElementById('notification');
     notification.innerHTML = message;
     notification.style.backgroundColor = color;
     notification.classList.add('active');
     setTimeout(function() {
+        console.log("hiding notif")
+        showingNotification = false;
         notification.classList.remove('active');
     }, 5000);
 }

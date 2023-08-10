@@ -57,8 +57,9 @@ function updateGameSettings(game, gameTitle, background, versions) {
         }
         gameContainer.style.opacity = 1;
         gameContainer.style.transform = "translateY(0)";
-
-        currentVersion.innerHTML = localStorage.getItem("currentVersion-" + gameName) || versions[0];
+        CurrentVersion = localStorage.getItem("currentVersion-" + gameName) || versions[0];
+        currentVersion.innerHTML = CurrentVersion;
+        
         isSwitching=false;
 
     }, 300);
