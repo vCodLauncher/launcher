@@ -9,9 +9,6 @@ This is a Call of Duty All-In-One launcher for the old-school players.
 CODLite aims to be a launcher that's easy-to-use, fast, and overall, that works.
 
 
-## Description
-
-
 ## Contents
 
 - [Features](#Features)
