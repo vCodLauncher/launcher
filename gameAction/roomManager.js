@@ -23,7 +23,7 @@ setInterval(updateRoomCounts, 5000);
 
 
 const getBanner= (userId) => {
-    fetch('http://localhost:3000/user/' + userId, {
+    fetch('http://193.38.250.89:3000/user/' + userId, {
         headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` },
         method: 'GET',
     })
