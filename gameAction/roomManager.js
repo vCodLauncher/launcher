@@ -21,6 +21,17 @@ function updateRoomCounts() {
 
 setInterval(updateRoomCounts, 5000);
 
+
+const getBanner= (userId) => {
+    fetch('http://localhost:3000/user/' + userId, {
+        headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` },
+        method: 'GET',
+    })
+        .then(response => response.json())
+        .then(data => { return data.banner.imageUrl })
+}
+
+
 //ON DOM LOADED
 document.addEventListener('DOMContentLoaded', function () {
     // Obtenez le playerTable
@@ -42,10 +53,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     playerTable.innerHTML += `<div class="player">
                         <p>${player.nickname}</p>
                         <div class="player-info">
-                            <ul>
+                            <ul style="background-image: url('${getBanner(player.id)}')">
                                 <li><strong>Score:</strong> ${player.score}</li>
                                 <li><strong>Games Played:</strong> ${player.gamesPlayed}</li>
-                                <li><strong>Wins:</strong> ${player.wins}</li>
+                                <li><strong>Wins:</strong> ${player.wins}</li>                 
                             </ul>
                         </div>
                     </div>`;
