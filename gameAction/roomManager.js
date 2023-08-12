@@ -23,28 +23,39 @@ setInterval(updateRoomCounts, 5000);
 
 //ON DOM LOADED
 document.addEventListener('DOMContentLoaded', function () {
-  //get playerTable
+    // Obtenez le playerTable
     const playerTable = document.getElementById('player-table');
 
-    fetch(`http://193.38.250.89:3000/room/1`, {
-        headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` },
-        method: 'GET',
-    })
-        .then(response => response.json())
-        .then(data => {
-            //for all players in room add a row to the table
-            data.players.forEach(player => {
-                playerTable.innerHTML += `<div class="player">
-                    <p>${player.nickname}</p>
-                    <div class="player-info">
-                        <ul>
-                            <li><strong>Score:</strong> 5000</li>
-                            <li><strong>Games Played:</strong> 150</li>
-                            <li><strong>Wins:</strong> 90</li>
-                        </ul>
-                    </div>
-                </div>`;
-            })
+    // Définissez une fonction pour mettre à jour les données des joueurs
+    function updatePlayerData() {
+        fetch(`http://193.38.250.89:3000/room/1`, {
+            headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` },
+            method: 'GET',
         })
+            .then(response => response.json())
+            .then(data => {
+                // Réinitialisez le contenu du tableau des joueurs
+                playerTable.innerHTML = '';
 
-})
+                // Parcourez les joueurs et ajoutez les nouvelles données au tableau
+                data.players.forEach(player => {
+                    playerTable.innerHTML += `<div class="player">
+                        <p>${player.nickname}</p>
+                        <div class="player-info">
+                            <ul>
+                                <li><strong>Score:</strong> ${player.score}</li>
+                                <li><strong>Games Played:</strong> ${player.gamesPlayed}</li>
+                                <li><strong>Wins:</strong> ${player.wins}</li>
+                            </ul>
+                        </div>
+                    </div>`;
+                });
+            });
+    }
+
+    // Appelez la fonction de mise à jour initiale
+    updatePlayerData();
+
+    // Utilisez setInterval pour appeler la fonction de mise à jour toutes les 5 secondes
+    setInterval(updatePlayerData, 5000);
+});
