@@ -45,9 +45,6 @@ document.addEventListener('DOMContentLoaded', function () {
     // Obtenez le playerTable
     const playerTable = document.getElementById('player-table');
 
-    // Créez un objet pour stocker les éléments HTML des joueurs
-    const playerElements = {};
-
     // Définissez une fonction pour mettre à jour les données des joueurs
     async function updatePlayerData() {
         try {
@@ -57,39 +54,29 @@ document.addEventListener('DOMContentLoaded', function () {
             });
             const roomData = await roomResponse.json();
 
-            // Parcourez les joueurs et mettez à jour les données existantes ou ajoutez de nouvelles données
+            // Réinitialisez le contenu du tableau des joueurs
+
+                playerTable.innerHTML = '';
+
+            // Parcourez les joueurs et ajoutez les nouvelles données au tableau
             for (const player of roomData.players) {
-                if (!playerElements[player.id]) {
-                    // Créez un nouvel élément pour le joueur s'il n'existe pas
-                    const playerElement = document.createElement('div');
-                    playerElement.classList.add('player');
-                    playerElement.innerHTML = `<p>${player.nickname}</p>
-                        <div class="player-info">
-                            <ul id="${player.id}">
-                                <li><strong>Score:</strong> ${player.score}</li>
-                                <li><strong>Games Played:</strong> ${player.gamesPlayed}</li>
-                                <li><strong>Wins:</strong> ${player.wins}</li>           
-                            </ul>
-                        </div>`;
-                    playerTable.appendChild(playerElement);
-
-                    // Stockez l'élément dans l'objet playerElements
-                    playerElements[player.id] = playerElement;
-                } else {
-                    // Mettez à jour les données du joueur existant
-                    const ulElement = playerElements[player.id].querySelector(`ul#${player.id}`);
-                    ulElement.innerHTML = `
-                        <li><strong>Score:</strong> ${player.score}</li>
-                        <li><strong>Games Played:</strong> ${player.gamesPlayed}</li>
-                        <li><strong>Wins:</strong> ${player.wins}</li>`;
-                }
-
-                // Mettez à jour l'image de bannière si disponible
                 const bannerUrl = await getBanner(player.id);
+
+                playerTable.innerHTML += `<div class="player">
+                    <p>${player.nickname}</p>
+                    <div class="player-info">
+                        <ul id="${player.id}">
+                            <li><strong>Score:</strong> ${player.score}</li>
+                            <li><strong>Games Played:</strong> ${player.gamesPlayed}</li>
+                            <li><strong>Wins:</strong> ${player.wins}</li>           
+                        </ul>
+                    </div>
+                </div>`;
                 if (bannerUrl) {
-                    playerElements[player.id].style.backgroundImage = `url('http://193.38.250.89:3000${bannerUrl}')`;
+                    document.getElementById(player.id).style.backgroundImage = `url('http://193.38.250.89:3000${bannerUrl}')`;
                 }
             }
+
         } catch (error) {
             console.error(error);
         }
@@ -99,6 +86,5 @@ document.addEventListener('DOMContentLoaded', function () {
     updatePlayerData();
 
     // Utilisez setInterval pour appeler la fonction de mise à jour toutes les 5 secondes
-    setInterval(updatePlayerData, 5000);
+    setInterval(updatePlayerData, 2000);
 });
-
