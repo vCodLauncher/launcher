@@ -1,33 +1,14 @@
-<link rel="stylesheet" href="../assets/css/login.css">
-<link href="https://fonts.googleapis.com/css2?family=Krona+One&family=Poppins:wght@300;400;500;600;700&family=Staatliches&display=swap"
-      rel="stylesheet">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Krona+One&family=Poppins:wght@300;400;500;600;700&family=Staatliches&display=swap"
+          rel="stylesheet">
+    <title>Login</title>
+</head>
+
 <body>
 <form id="login" >
-    <div class="container">
-        <div class="login-container">
-            <div class="login-box">
-                <img class="logo" src="../assets/game_logo/cod_1_logo.png">
-                <div class="login-title-content">
-                    <h1 class="login-title">
-                        LOGIN
-                    </h1>
-                </div>
-                <div class="login-input-container">
-                    <div id="error" class="error"></div>
-                    <label class="login-label" for="email">Email :</label>
-                    <input type="text" class="login-input" id="email" placeholder="jean@jean.fr">
-                    <label class="login-label" for="password">Password :</label>
-                    <input type="password" class="login-input" placeholder="XXXXXXXXXXX" id="password">
-                </div>
-                <button class="login-btn" type="submit">
-                    Login
-                </button>
-                <p class="login-register">
-                    Don't have an account? <a href="register.html">Register</a>
-                </p>
-            </div>
-        </div>
-    </div>
+    <input id="email" />
+    <input id="password" />
+    <button id="submit" type="button">Login</button>
 </form>
 <script src="../assets/js/login.js"></script>
 </body>

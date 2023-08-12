@@ -63,6 +63,21 @@ document.addEventListener("DOMContentLoaded", function() {
     roomBoxes.forEach(function(roomBox) {
         roomBox.addEventListener("click", function() {
             const roomType = this.getAttribute("data-room");
+            console.log('test')
+            let loginStatus = checkLogin();
+            console.log(loginStatus);
+            if (loginStatus === false){
+                return;
+            }
+
+            fetch(`http://193.38.250.89:3000/room/join/1`, {
+                headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` },
+                method: 'POST'
+            })
+                .then(response => response.json())
+                .then(data => console.log(data))
+                .catch(error => console.error('Error:', error));
+
             console.log(roomType)
             window.location.href = "gamePage.html?roomType=" + roomType + "&game="+gameName+"&version="+CurrentVersion;
         });

@@ -21,20 +21,30 @@ function updateRoomCounts() {
 
 setInterval(updateRoomCounts, 5000);
 
-window.addEventListener("DOMContentLoaded", function() {
+//ON DOM LOADED
+document.addEventListener('DOMContentLoaded', function () {
+  //get playerTable
+    const playerTable = document.getElementById('player-table');
 
-    const roomElements = document.querySelectorAll(".room-box");
-
-    roomElements.forEach(roomElement => {
-        roomElement.addEventListener("click", function() {
-            const roomType = roomElement.getAttribute('data-room');
-
-            fetch(`http://193.38.250.89:3000/room/${roomType}/join`, {
-                method: 'POST'
+    fetch(`http://193.38.250.89:3000/room/1`, {
+        headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` },
+        method: 'GET',
+    })
+        .then(response => response.json())
+        .then(data => {
+            //for all players in room add a row to the table
+            data.players.forEach(player => {
+                playerTable.innerHTML += `<div class="player">
+                    <p>${player.nickname}</p>
+                    <div class="player-info">
+                        <ul>
+                            <li><strong>Score:</strong> 5000</li>
+                            <li><strong>Games Played:</strong> 150</li>
+                            <li><strong>Wins:</strong> 90</li>
+                        </ul>
+                    </div>
+                </div>`;
             })
-                .then(response => response.json())
-                .then(data => console.log(data))
-                .catch(error => console.error('Error:', error));
-        });
-    });
-});
+        })
+
+})

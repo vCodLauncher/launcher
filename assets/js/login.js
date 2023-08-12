@@ -1,13 +1,9 @@
 
 document.addEventListener('DOMContentLoaded', function () {
 
-    if (localStorage.getItem('token')) {
-        window.location.href = "index.html";
-    };
+    const button = document.getElementById('submit');
 
-    const form = document.getElementById('login');
-
-    form.addEventListener('submit', function (e) {
+    button.addEventListener('click', function (e) {
       const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
         const data = { email, password };
@@ -27,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 return;
             }
             localStorage.setItem('token', data.token);
-            window.location.reload();
+            window.close();
         }).catch((error) => {
             console.error('Error:', error);
             const errorDiv = document.getElementById('error');

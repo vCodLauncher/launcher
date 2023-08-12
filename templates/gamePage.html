@@ -3,7 +3,7 @@
       rel="stylesheet">
 
 <section class="container">
-    <div class="room-exit-button" id="quit-btn">
+    <div class="room-exit-button" id="x">
         <div class="button-settings">
             <img class="play-icon" src="../assets/icon/x.png" width="32" height="32">
         </div>
@@ -111,70 +111,10 @@
             <h3 class="player-title">
                 Need 2 more players to start the game ...
             </h3>
-            <div class="player-table">
-                <div class="player">
-                    <p>wysix</p>
-                    <div class="player-info">
-                        <ul>
-                            <li><strong>Score:</strong> 5000</li>
-                            <li><strong>Games Played:</strong> 150</li>
-                            <li><strong>Wins:</strong> 90</li>
-                        </ul>
-                    </div>
-                </div>
-                <p>
-                    Dodo le reporter
-                </p>
-                <p class="searching">
-                    Searching players <span>.</span><span>.</span><span>.</span>
-                </p>
-                <p class="searching">
-                    Searching players <span>.</span><span>.</span><span>.</span>
-                </p>
-                <p class="searching">
-                    Searching players <span>.</span><span>.</span><span>.</span>
-                </p>
-                <p class="searching">
-                    Searching players <span>.</span><span>.</span><span>.</span>
-                </p>
-                <p class="searching">
-                    Searching players <span>.</span><span>.</span><span>.</span>
-                </p>
-                <p class="searching">
-                    Searching players <span>.</span><span>.</span><span>.</span>
-                </p>
-                <p class="searching">
-                    Searching players <span>.</span><span>.</span><span>.</span>
-                </p>
-                <p class="searching">
-                    Searching players <span>.</span><span>.</span><span>.</span>
-                </p>
-                <p class="searching">
-                    Searching players <span>.</span><span>.</span><span>.</span>
-                </p>
-                <p class="searching">
-                    Searching players <span>.</span><span>.</span><span>.</span>
-                </p>
-                <p class="searching">
-                    Searching players <span>.</span><span>.</span><span>.</span>
-                </p>
-                <p class="searching">
-                    Searching players <span>.</span><span>.</span><span>.</span>
-                </p>
+            <div class="player-table" id="player-table">
+
             </div>
         </div>
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                var playerTable = document.querySelector('.player-table');
-                var playerSearchElems = playerTable.querySelectorAll('p');
-
-                playerSearchElems.forEach(function(elem) {
-                    if (elem.innerText === 'Searching players ...') {
-                        elem.classList.add('searching');
-                    }
-                });
-            });
-        </script>
     </div>
 </section>
 

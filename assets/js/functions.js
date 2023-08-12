@@ -105,6 +105,27 @@ function updateMenuOptionsSettings(title, background) {
 
 }
 
+function checkLogin() {
+    if (localStorage.getItem('token')) {
+        fetch('http://193.38.250.89:3000/auth/me', {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+        }).then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    localStorage.removeItem('token');
+                    window.open('../templates/login.html');
+                    return false;
+                }
+            });
+        return true;
+    };
+    localStorage.removeItem('token');
+    window.open('../templates/login.html');
+    return false;
+}
+
 function updateSettingsContainer(locations) {
     let settingsHTML = '';
     var settingsContainer = document.querySelector(".modal-content");
