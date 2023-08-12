@@ -57,5 +57,5 @@ document.addEventListener('DOMContentLoaded', function () {
     updatePlayerData();
 
     // Utilisez setInterval pour appeler la fonction de mise à jour toutes les 5 secondes
-    setInterval(updatePlayerData, 5000);
+    setInterval(updatePlayerData, 2000);
 });
