@@ -18,41 +18,28 @@ var showingNotification = false;
 
 document.addEventListener("DOMContentLoaded", function() {
 
-    // It would be good to add the token verification logic into
-    // a VerifyToken() function.
-    // I will leave this logic untouched because its unfinished.
+    function updateRoomCounts() {
+        let roomTypes = ['team-deathmatch', 'search-and-destroy', 'deathmatch', 'gungame'];
 
-    // Vérifier la valeur du token dans le LocalStorage
-    // const token = localStorage.getItem('token');
-        
-    /*// Si le token est vide ou indéfini, rediriger vers la page de connexion
-    if (!token) {
-        window.location.href = 'login.html#'; // Remplacez "login.html" par l'URL de votre page de connexion
-    }
-    */
-
-    /*
-        function checkToken() {
-
-            fetch(`http://193.38.250.89:3000/auth/me`, {
-                headers: {
-                    'Authorization': `Bearer ${localStorage.getItem('token')}`
-                }
-            })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.error) {
-                        localStorage.removeItem('token');
-                        window.location.href = 'login.html#';
+        /*    roomTypes.forEach(roomType => {
+                fetch(`http://193.38.250.89:3000/room/team-deathmatch`, {
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('token')}`
                     }
                 })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
+                    .then(response => response.json())
+                    .then(data => {
+                        // Mettre à jour l'affichage du nombre de joueurs dans la room
+                        let playersOnline = document.getElementById(`${roomType}-players`);
+                        playersOnline.textContent = data.players;
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+            });*/
     }
 
-    setInterval(checkToken, 5000);
-    */
+    setInterval(updateRoomCounts, 5000);
 
     
     switchMenu(optionName,true)

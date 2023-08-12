@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain, dialog } = require('electron');
+const {app, BrowserWindow, ipcMain, dialog} = require('electron');
 const path = require('path');
 var pjson = require('./package.json');
 
@@ -11,7 +11,7 @@ function createWindow() {
     });
     ipcMain.on('open-folder-dialog', (event) => {
         dialog
-            .showOpenDialog({ properties: ['openDirectory'] })
+            .showOpenDialog({properties: ['openDirectory']})
             .then((result) => {
                 const selectedDirectory = result.filePaths[0];
                 event.sender.send('selected-folder', selectedDirectory);
@@ -35,7 +35,6 @@ function createWindow() {
         },
         icon: path.join(__dirname, 'assets/game_logo/cod_1_logo.png'),
     });
-
 
 
     updateWindow.setTitle('COD Launcher - Update');
@@ -66,6 +65,7 @@ function launchMainWindow() {
     mainWindow.setTitle('CODLite Launcher - v' + pjson.version);
     /*mainWindow.setMenu(null);*/
 }
+
 app.whenReady().then(() => {
     createWindow()
 
@@ -75,10 +75,32 @@ app.whenReady().then(() => {
     })
 })
 
-app.on('window-all-closed', function () {
+app.on('before-quit', async function () {
+    try {
+        const response = await fetch(`http://193.38.250.89:3000/room/leave`, {
+            method: 'POST', // Ou 'GET', 'PUT', etc., en fonction de vos besoins
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                'Content-Type': 'application/json'
+            },
+            // Incluez d'autres options de requête si nécessaire
+        });
+
+        // Traitez la réponse si nécessaire
+        const data = await response.json();
+        console.log('API Response:', data);
+    } catch (error) {
+        console.error('Error during API request:', error);
+    }
+});
+
+app.on('window-all-closed', async function () {
+
+
     if (process.platform !== 'darwin') app.quit()
 })
 
 try {
     require('electron-reloader')(module)
-} catch (_) {}
+} catch (_) {
+}
