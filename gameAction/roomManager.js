@@ -1,36 +1,45 @@
 function updateRoomCounts() {
     let roomTypes = ['team-deathmatch', 'search-and-destroy', 'deathmatch', 'gungame'];
 
-/*    roomTypes.forEach(roomType => {
-        fetch(`http://193.38.250.89:3000/room/team-deathmatch`, {
-            headers: {
-                'Authorization': `Bearer ${localStorage.getItem('token')}`
-            }
-        })
-            .then(response => response.json())
-            .then(data => {
-                // Mettre à jour l'affichage du nombre de joueurs dans la room
-                let playersOnline = document.getElementById(`${roomType}-players`);
-                playersOnline.textContent = data.players;
+    /*    roomTypes.forEach(roomType => {
+            fetch(`http://193.38.250.89:3000/room/team-deathmatch`, {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                }
             })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-    });*/
+                .then(response => response.json())
+                .then(data => {
+                    // Mettre à jour l'affichage du nombre de joueurs dans la room
+                    let playersOnline = document.getElementById(`${roomType}-players`);
+                    playersOnline.textContent = data.players;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });*/
 }
 
 setInterval(updateRoomCounts, 5000);
 
 
-const getBanner= (userId) => {
+const getBanner = (userId) => {
     fetch('http://193.38.250.89:3000/user/' + userId, {
-        headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` },
+        headers: {'Authorization': `Bearer ${localStorage.getItem('token')}`},
         method: 'GET',
     })
         .then(response => response.json())
-        .then(data => { return data.banner.imageUrl })
+        .then(data => {
+            fetch('http://193.38.250.89:3000/banner/' + data.user.bannerId, {
+                headers: {'Authorization': `Bearer ${localStorage.getItem('token')}`},
+                method: 'GET',
+            })
+                .then(response => response.json())
+                .then(data2 => {
+                    console.log(data2.banner.imageUrl)
+                    return data2.banner.imageUrl
+                })
+        })
 }
-
 
 //ON DOM LOADED
 document.addEventListener('DOMContentLoaded', function () {
@@ -40,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Définissez une fonction pour mettre à jour les données des joueurs
     function updatePlayerData() {
         fetch(`http://193.38.250.89:3000/room/1`, {
-            headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` },
+            headers: {'Authorization': `Bearer ${localStorage.getItem('token')}`},
             method: 'GET',
         })
             .then(response => response.json())
@@ -50,13 +59,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 // Parcourez les joueurs et ajoutez les nouvelles données au tableau
                 data.players.forEach(player => {
+                    console.log(getBanner(player.id))
                     playerTable.innerHTML += `<div class="player">
                         <p>${player.nickname}</p>
                         <div class="player-info">
-                            <ul style="background-image: url('${getBanner(player.id)}')">
+                            <ul style="background-image: url('http://193.38.250.89:3000${getBanner(player.id)}')">
                                 <li><strong>Score:</strong> ${player.score}</li>
                                 <li><strong>Games Played:</strong> ${player.gamesPlayed}</li>
-                                <li><strong>Wins:</strong> ${player.wins}</li>                 
+                                <li><strong>Wins:</strong> ${player.wins}</li>           
                             </ul>
                         </div>
                     </div>`;
