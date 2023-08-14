@@ -149,6 +149,7 @@ body {
     font-family: 'Staatliches', sans-serif;
     text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
     transition: opacity 0.2s ease;
+    margin-left: 4rem;
 }
 
 .container-button {
@@ -174,6 +175,7 @@ body {
     position: relative;
     overflow: hidden;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin-left: 4rem;
 }
 .button-play:hover {
     background-color: #ffffff;
@@ -185,6 +187,7 @@ body {
     position: relative;
     z-index: 2;
     white-space: nowrap;
+
 }
 
 .play-icon {
@@ -481,6 +484,7 @@ body {
     cursor: pointer;
     width: 46px;
     height: 40px;
+    margin-left: 4rem;
 }
 
 .version i {
