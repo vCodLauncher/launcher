@@ -1,7 +1,6 @@
 
 
 
-
 function PlaySound (path,volume) {
     if (!volume)
         volume=0.2;
@@ -106,6 +105,7 @@ function updateMenuOptionsSettings(title, background) {
 }
 
 function checkLogin() {
+
     if (localStorage.getItem('token')) {
         fetch('http://193.38.250.89:3000/auth/me', {
             headers: {
@@ -115,14 +115,16 @@ function checkLogin() {
             .then(data => {
                 if (data.error) {
                     localStorage.removeItem('token');
-                    window.open('../templates/login.html');
+
+                    ipcRenderer.send('open-login-window');
+
                     return false;
                 }
             });
         return true;
     };
     localStorage.removeItem('token');
-    window.open('../templates/login.html');
+    ipcRenderer.send('open-login-window');
     return false;
 }
 

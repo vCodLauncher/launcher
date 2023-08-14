@@ -17,28 +17,28 @@ document.addEventListener('DOMContentLoaded', function () {
         ipcRenderer.invoke('startUpdatedGame').catch((error) => {
             console.error(error);
         });
-    }, 1)
+    }, 6000)
 
-    // setTimeout(() => {
-    //     message.innerHTML = "Installing Update";
-    //     progress.style.display = "block";
+    setTimeout(() => {
+        message.innerHTML = "Installing Update";
+        progress.style.display = "block";
 
-    //     let i = 0;
-    //     const interval = setInterval(() => {
-    //         if (i <= 100) {
-    //             progress.value = i;
-    //             i++;
-    //         } else {
-    //             clearInterval(interval);
-    //             progress.style.display = 'none';
-    //             message.innerHTML = 'Starting Launcher';
-    //             setTimeout(() => {
-    //                 ipcRenderer.invoke('startUpdatedGame').catch((error) => {
-    //                     console.error(error);
-    //                 });
-    //             }, 3000);
-    //         }
-    //     }, 20);
-    // }, 3000);
+        let i = 0;
+        const interval = setInterval(() => {
+            if (i <= 100) {
+                progress.value = i;
+                i++;
+            } else {
+                clearInterval(interval);
+                progress.style.display = 'none';
+                message.innerHTML = 'Starting Launcher';
+                setTimeout(() => {
+                    ipcRenderer.invoke('startUpdatedGame').catch((error) => {
+                        console.error(error);
+                    });
+                }, 3000);
+            }
+        }, 20);
+    }, 3000);
 
 });

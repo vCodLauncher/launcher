@@ -33,7 +33,7 @@ function createWindow() {
             contextIsolation: false,
             enableRemoteModule: true,
         },
-        icon: path.join(__dirname, 'assets/game_logo/cod_1_logo.png'),
+        icon: path.join(__dirname, 'assets/game_logo/codlite_logo.png'),
     });
 
 
@@ -58,7 +58,7 @@ function launchMainWindow() {
             contextIsolation: false,
             enableRemoteModule: true,
         },
-        icon: path.join(__dirname, 'assets/game_logo/cod_1_logo.png'),
+        icon: path.join(__dirname, 'assets/game_logo/codlite_logo.png'),
     });
 
     mainWindow.loadFile(path.join(__dirname, 'templates/index.html'));
@@ -75,23 +75,21 @@ app.whenReady().then(() => {
     })
 })
 
-app.on('before-quit', async function () {
-    try {
-        const response = await fetch(`http://193.38.250.89:3000/room/leave`, {
-            method: 'POST', // Ou 'GET', 'PUT', etc., en fonction de vos besoins
-            headers: {
-                'Authorization': `Bearer ${localStorage.getItem('token')}`,
-                'Content-Type': 'application/json'
-            },
-            // Incluez d'autres options de requête si nécessaire
-        });
 
-        // Traitez la réponse si nécessaire
-        const data = await response.json();
-        console.log('API Response:', data);
-    } catch (error) {
-        console.error('Error during API request:', error);
-    }
+
+
+// Fonction pour ouvrir une nouvelle fenêtre
+ipcMain.on('open-login-window', (event, arg) => {
+    const newWindow = new BrowserWindow({
+        width: 400,
+        height: 600,
+        webPreferences: {
+            nodeIntegration: true
+        },
+        icon: path.join(__dirname, 'assets/game_logo/codlite_logo.png'),
+    });
+
+    newWindow.loadFile('templates/login.html');
 });
 
 app.on('window-all-closed', async function () {
