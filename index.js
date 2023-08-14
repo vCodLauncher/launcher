@@ -33,10 +33,9 @@ function createWindow() {
             contextIsolation: false,
             enableRemoteModule: true,
         },
-        icon: path.join(__dirname, 'assets/game_logo/codlite_logo.png'),
     });
 
-
+    updateWindow.setIcon(path.join(__dirname, 'assets/game_logo/codlite_logo.png'));
     updateWindow.setTitle('COD Launcher - Update');
     updateWindow.loadFile(path.join(__dirname, 'templates/update.html'));
     updateWindow.setMenu(null);
@@ -58,9 +57,8 @@ function launchMainWindow() {
             contextIsolation: false,
             enableRemoteModule: true,
         },
-        icon: path.join(__dirname, 'assets/game_logo/codlite_logo.png'),
     });
-
+    mainWindow.setIcon(path.join(__dirname, 'assets/game_logo/codlite_logo.png'));
     mainWindow.loadFile(path.join(__dirname, 'templates/index.html'));
     mainWindow.setTitle('CODLite Launcher - v' + pjson.version);
     /*mainWindow.setMenu(null);*/
