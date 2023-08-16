@@ -104,8 +104,12 @@ a {
     cursor: pointer;
 }
 
-
 .matchtype-card.active {
+    filter: grayscale(0%); /* restaure les couleurs originales */
+    border: 2px solid #af2e2e;
+}
+
+.matchtype-card:hover {
     filter: grayscale(0%); /* restaure les couleurs originales */
     border: 2px solid #af2e2e;
 }
