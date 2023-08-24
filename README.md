@@ -23,6 +23,7 @@ CODLite aims to be a launcher that's easy-to-use, fast, and overall, that works.
 - Competitive system with ranks.
 - Masterlist so you can see all CODLite servers.
 - Connect to servers with a button on webpages.
+- Anticheat in progress for Competitive Games.
 - More to do..
 
 ## Getting Started
