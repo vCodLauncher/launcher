@@ -18,6 +18,7 @@
     align-items: center;
     color : white;
     flex-direction: column;
+    transition: 0.3s ease-in-out;
 }
 
 .matchtype-background {
@@ -30,6 +31,22 @@
     background-size: cover;
     background-repeat: no-repeat;
 
+}
+
+.matchtype-background-br {
+    width: 100%;
+    height: 80%;
+    background-image:
+            linear-gradient(to top, black, transparent),
+            url("../../../assets/cards/card18.jpeg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+
+.matchtype:hover {
+    filter: grayscale(0%); /* rend l'image en noir et blanc */
 }
 
 .matchtype-name-container {
@@ -45,4 +62,5 @@
     font-family: "Roboto mono";
     font-size: 28px;
     text-transform: uppercase;
+    text-decoration: none;
 }

@@ -127,6 +127,7 @@ a {
     align-items: center;
     flex-direction: column;
     text-align: center;
+    gap: 1rem;
 }
 
 .matchtype-subTitle {
@@ -166,6 +167,11 @@ a {
     flex-direction: column;
     cursor: pointer;
     transition: ease 0.3s;
+}
+
+.matchtype-card-ranked:hover {
+    filter: grayscale(0%); /* restaure les couleurs originales */
+    border: 2px solid #af2e2e;
 }
 
 
