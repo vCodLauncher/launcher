@@ -193,10 +193,7 @@ function switchMenu(option, firstTime) {
                 break;
             case "shop":
                 console.log("shop")
-                updateMenuOptionsSettings(
-                    "Shop",
-                    'url("../assets/game_background/cod_2_background.webp")'
-                );
+                updateMenuOptionsSettings(    "Shop",'url("../assets/game_background/cod_2_background.webp")');
                 break;
         }
 

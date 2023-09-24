@@ -3,6 +3,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const button = document.getElementById('submit');
 
+    const closeButton = document.getElementById('x');
+
+    x.addEventListener('click', function (e) {
+        window.close();
+    })
+
     button.addEventListener('click', function (e) {
       const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;

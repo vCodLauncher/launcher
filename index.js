@@ -62,6 +62,9 @@ function launchMainWindow() {
     mainWindow.loadFile(path.join(__dirname, 'templates/index.html'));
     mainWindow.setTitle('CODLite Launcher - v' + pjson.version);
     /*mainWindow.setMenu(null);*/
+
+
+
 }
 
 app.whenReady().then(() => {
@@ -81,6 +84,10 @@ ipcMain.on('open-login-window', (event, arg) => {
     const newWindow = new BrowserWindow({
         width: 400,
         height: 600,
+        resizable: false,
+        fullscreenable: false,
+        frame: false,
+        movable: true,
         webPreferences: {
             nodeIntegration: true
         },
