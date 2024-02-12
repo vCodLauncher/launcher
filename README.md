@@ -53,4 +53,4 @@ You can also contact us on our [Discord](https://discord.gg/TfK8RPCuFN).
 - [wysix](https://github.com/wysixontheflux)
 - [Dodo Le Reporter](https://github.com/dodolereporter)
 - [inuckles](https://github.com/bcortezf)
-- [Brejax]([https://github.com/mambuzrrr)
+- [Brejax](https://github.com/mambuzrrr)
